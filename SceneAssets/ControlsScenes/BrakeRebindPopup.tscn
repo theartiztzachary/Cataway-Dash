@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbeln681xrbgo"]
+
+[ext_resource type="Script" path="res://ScriptAssets/ControlsScripts/BrakeRebind.gd" id="1_3ij77"]
+
+[node name="BrakeRebindPopup" type="Popup"]
+visible = true
+script = ExtResource("1_3ij77")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 221.0
+offset_right = 429.0
+offset_bottom = 270.0
+text = "Rebinding Brake Button...
+Press any Button to Bind."

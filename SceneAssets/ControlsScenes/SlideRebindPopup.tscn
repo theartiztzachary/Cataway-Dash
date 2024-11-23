@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://coi6cpg3fcyst"]
+
+[ext_resource type="Script" path="res://ScriptAssets/ControlsScripts/SlideRebind.gd" id="1_t4tbq"]
+
+[node name="SlideRebindPopup" type="Popup"]
+visible = true
+script = ExtResource("1_t4tbq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Rebinding Slide Button...
+Press any button to bind."

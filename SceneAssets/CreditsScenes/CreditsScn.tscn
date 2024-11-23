@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://defh4whvokvjx"]
+
+[ext_resource type="Script" path="res://ScriptAssets/CreditsScripts/StartButton.gd" id="1_hnj2m"]
+
+[node name="CreditsScn" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Credits"
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 447.0
+offset_right = 639.0
+offset_bottom = 478.0
+text = "Main Menu"
+script = ExtResource("1_hnj2m")
+
+[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]

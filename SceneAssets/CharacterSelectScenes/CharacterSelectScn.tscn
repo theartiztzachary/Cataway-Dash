@@ -1,0 +1,297 @@
+[gd_scene load_steps=19 format=3 uid="uid://dafhek76v0apk"]
+
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/SelenaButton.gd" id="1_oe67e"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/Controler.gd" id="1_oeilx"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/IsaacButton.gd" id="2_g8pj3"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/DJButton.gd" id="3_t41gu"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/KorriaButton.gd" id="4_l08yl"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/AdienButton.gd" id="5_h0ml1"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/LyvokButton.gd" id="6_i5eh4"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/StartButton.gd" id="7_rony2"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/How2PlayButton.gd" id="8_yvfcd"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/ControlsButton.gd" id="9_e3n3b"]
+[ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/GoButton.gd" id="10_1p4hb"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/AccelField.gd" id="12_fnptb"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/MaxSpeedField.gd" id="13_thpah"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/JumpField.gd" id="14_xyuoe"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/BrakeField.gd" id="15_kpwil"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityMaxField.gd" id="16_v7aeg"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityAccelField.gd" id="17_x1yau"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/PlatHeightField.gd" id="18_s7gur"]
+
+[node name="CharacterSelectScn" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_oeilx")
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Character Selection"
+
+[node name="SelenaButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 26.0
+offset_right = 62.0
+offset_bottom = 57.0
+text = "Selena"
+script = ExtResource("1_oe67e")
+
+[node name="IsaacButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 59.0
+offset_right = 51.0
+offset_bottom = 90.0
+text = "Isaac
+"
+script = ExtResource("2_g8pj3")
+
+[node name="DJButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 93.0
+offset_right = 38.0
+offset_bottom = 124.0
+text = "DJ"
+script = ExtResource("3_t41gu")
+
+[node name="KorriaButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 26.0
+offset_right = 141.0
+offset_bottom = 57.0
+text = "Korria"
+script = ExtResource("4_l08yl")
+
+[node name="AdienButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 58.0
+offset_right = 139.0
+offset_bottom = 89.0
+text = "Adien"
+script = ExtResource("5_h0ml1")
+
+[node name="LyvokButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 92.0
+offset_right = 139.0
+offset_bottom = 123.0
+text = "Lyvok"
+script = ExtResource("6_i5eh4")
+
+[node name="CharacterName" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 636.0
+offset_bottom = 34.0
+
+[node name="AbilityName" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 38.0
+offset_right = 638.0
+offset_bottom = 61.0
+
+[node name="AbilityDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 65.0
+offset_right = 633.0
+offset_bottom = 123.0
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 327.0
+offset_right = 638.0
+offset_bottom = 358.0
+text = "Main Menu"
+script = ExtResource("7_rony2")
+
+[node name="How2PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 359.0
+offset_right = 639.0
+offset_bottom = 390.0
+text = "How To Play"
+script = ExtResource("8_yvfcd")
+
+[node name="ControlsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 391.0
+offset_right = 638.0
+offset_bottom = 422.0
+text = "Controls"
+script = ExtResource("9_e3n3b")
+
+[node name="GoButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 425.0
+offset_right = 638.0
+offset_bottom = 477.0
+text = "Go!"
+script = ExtResource("10_1p4hb")
+
+[node name="testControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 3.0
+offset_right = 234.0
+offset_bottom = 24.0
+
+[node name="AccelLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 141.0
+offset_right = 99.0
+offset_bottom = 164.0
+text = "Acceleration"
+
+[node name="AccelField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 138.0
+offset_right = 174.063
+offset_bottom = 169.0
+script = ExtResource("12_fnptb")
+
+[node name="MaxSpeedLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 181.0
+offset_right = 89.0
+offset_bottom = 204.0
+text = "Max Speed"
+
+[node name="MaxSpeedField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 176.0
+offset_right = 173.063
+offset_bottom = 207.0
+script = ExtResource("13_thpah")
+
+[node name="JumpLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 221.0
+offset_right = 97.0
+offset_bottom = 244.0
+text = "Jump Power"
+
+[node name="JumpField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 216.0
+offset_right = 173.063
+offset_bottom = 247.0
+script = ExtResource("14_xyuoe")
+
+[node name="BrakeLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 258.0
+offset_right = 101.0
+offset_bottom = 281.0
+text = "Brake Power"
+
+[node name="BrakeField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 252.0
+offset_right = 173.063
+offset_bottom = 283.0
+script = ExtResource("15_kpwil")
+
+[node name="GravityMaxLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 324.0
+offset_right = 95.0
+offset_bottom = 347.0
+text = "Gravity Max"
+
+[node name="GravityMaxField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 321.0
+offset_right = 172.063
+offset_bottom = 352.0
+script = ExtResource("16_v7aeg")
+
+[node name="GravityAccelLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 359.0
+offset_right = 160.0
+offset_bottom = 382.0
+text = "Gravity Acceleration"
+
+[node name="GravityAccelField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 355.0
+offset_right = 238.063
+offset_bottom = 386.0
+script = ExtResource("17_x1yau")
+
+[node name="PlatHeightLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 398.0
+offset_right = 125.0
+offset_bottom = 421.0
+text = "Platform Height"
+
+[node name="PlatHeightField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 395.0
+offset_right = 202.063
+offset_bottom = 426.0
+script = ExtResource("18_s7gur")
+
+[node name="TestInstructions" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 142.0
+offset_right = 631.0
+offset_bottom = 322.0
+text = "To edit a given stat, click on the input field for that stat
+and change the number before hitting the Enter key. You
+will know the change was sent successfully when the
+carrot moves to the front of the number you typed.
+Please only type numbers. If unsure, you can double check
+by picking another character or menu and then returning."
+
+[connection signal="pressed" from="Control/SelenaButton" to="Control/SelenaButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/IsaacButton" to="Control/IsaacButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/DJButton" to="Control/DJButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/KorriaButton" to="Control/KorriaButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/AdienButton" to="Control/AdienButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/LyvokButton" to="Control/LyvokButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/How2PlayButton" to="Control/How2PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/GoButton" to="Control/GoButton" method="_on_pressed"]
+[connection signal="text_submitted" from="testControl/AccelField" to="testControl/AccelField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/MaxSpeedField" to="testControl/MaxSpeedField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/JumpField" to="testControl/JumpField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/BrakeField" to="testControl/BrakeField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/GravityMaxField" to="testControl/GravityMaxField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/GravityAccelField" to="testControl/GravityAccelField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/PlatHeightField" to="testControl/PlatHeightField" method="_on_text_submitted"]

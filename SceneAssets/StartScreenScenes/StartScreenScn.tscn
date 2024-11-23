@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2xt7q1lkuhgc"]
+
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/StartScreenControl.gd" id="1_i7jly"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/StartPlayButton.gd" id="2_ef6qy"]
+[ext_resource type="Texture2D" uid="uid://bxk0l46ne1aj0" path="res://TestAssets/testVisuals/testStartScreenVisuals/test_SelenaPortrait.png" id="2_ti1w1"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/StartControlsButton.gd" id="3_d2atw"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/How2PlayButton.gd" id="3_ue0g0"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/OptionsButton.gd" id="4_5m55e"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/CreditsButton.gd" id="5_oubtd"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/QuitButton.gd" id="6_clnkm"]
+
+[node name="StartScreenScn" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_i7jly")
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 231.0
+offset_right = 637.0
+offset_bottom = 311.0
+text = "Play"
+script = ExtResource("2_ef6qy")
+
+[node name="How2PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 314.0
+offset_right = 638.0
+offset_bottom = 345.0
+text = "How To Play"
+script = ExtResource("3_ue0g0")
+
+[node name="ControlsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 347.0
+offset_right = 639.0
+offset_bottom = 378.0
+text = "Controls"
+script = ExtResource("3_d2atw")
+
+[node name="OptionsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 379.0
+offset_right = 639.0
+offset_bottom = 410.0
+text = "Options"
+script = ExtResource("4_5m55e")
+
+[node name="CreditsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 412.0
+offset_right = 639.0
+offset_bottom = 443.0
+text = "Credits"
+script = ExtResource("5_oubtd")
+
+[node name="QuitButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 446.0
+offset_right = 638.0
+offset_bottom = 477.0
+text = "Quit"
+script = ExtResource("6_clnkm")
+
+[node name="tempStartScreenLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 191.0
+offset_bottom = 42.0
+text = "Cataway Dash! - Pre-Alpha"
+
+[node name="tempPortraits" type="Sprite2D" parent="Control"]
+position = Vector2(152, 328)
+texture = ExtResource("2_ti1w1")
+
+[connection signal="pressed" from="Control/PlayButton" to="Control/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/How2PlayButton" to="Control/How2PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/OptionsButton" to="Control/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/CreditsButton" to="Control/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/QuitButton" to="Control/QuitButton" method="_on_pressed"]
