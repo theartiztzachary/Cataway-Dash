@@ -62,5 +62,4 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_animation_player_current_animation_changed(name):
 	print(str(name))
 	print(CharacterHandler.current_play_state)
-	print(str(sprite))
 	print(str(sprite.texture)) # WHY IS THIS NULL WITH THIS SETUP
