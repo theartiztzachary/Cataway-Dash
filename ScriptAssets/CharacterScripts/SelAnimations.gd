@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-# @onready is similar to putting something in _ready()
-@onready var animation_tree = get_node("AnimationTree")
+#@onready var animation_tree = get_node("AnimationTree")
 @onready var anim_player = $AnimationPlayer
+
+@onready var sprite = $Sprite2D
+
+#if you get a glitch frame, call advance(0) after calling play()
 
 func _process(_delta):
 	if CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.START:
@@ -48,10 +51,16 @@ func _process(_delta):
 #		game_over_anim_set = false
 
 func _on_animation_player_animation_finished(anim_name):
-	print(str(anim_name))
 	if "Start" in anim_name:
 		CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.PLAY
 	elif "Ability" in anim_name:
 		CharacterHandler.in_ability = false
 	elif "Over" in anim_name:
 		CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.END
+
+
+func _on_animation_player_current_animation_changed(name):
+	print(str(name))
+	print(CharacterHandler.current_play_state)
+	print(str(sprite))
+	print(str(sprite.texture)) # WHY IS THIS NULL WITH THIS SETUP

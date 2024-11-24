@@ -14,3 +14,5 @@ res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaSta
 res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaEnd.tres
 res://ScriptAssets/StartScreenScripts/StartPlayButton.gd
 res://ReadMenNotes.txt
+res://ScriptAssets/CharacterScripts/IsaAnimations.gd
+res://SceneAssets/CharacterScenes/IsaacScn.tscn
