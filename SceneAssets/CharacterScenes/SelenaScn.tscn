@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://di5fls25m8c7p"]
+[gd_scene load_steps=133 format=3 uid="uid://di5fls25m8c7p"]
 
 [ext_resource type="Script" path="res://ScriptAssets/CharacterScripts/SelAnimations.gd" id="1_nnf63"]
 [ext_resource type="Animation" uid="uid://ctn7ndsp2b8w7" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienAbility.tres" id="2_j7aex"]
@@ -11,6 +11,7 @@
 [ext_resource type="Animation" uid="uid://1rr86oj8t6xr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStart.tres" id="9_mtmm7"]
 [ext_resource type="Animation" uid="uid://c3e4c5kuwuvn" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStopped.tres" id="10_0fvo2"]
 [ext_resource type="Animation" uid="uid://bmi50lbnynwvm" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJAbility.tres" id="11_bsy4r"]
+[ext_resource type="Animation" uid="uid://bsoglp6yt4e06" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienEnd.tres" id="11_x0m6y"]
 [ext_resource type="Animation" uid="uid://cujubqhf66i2r" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJBrake.tres" id="12_dgmd8"]
 [ext_resource type="Animation" uid="uid://gt4s4pk46n3u" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJFall.tres" id="13_qxkr2"]
 [ext_resource type="Animation" uid="uid://ddxins7mo7vmd" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJJump.tres" id="14_ds2ma"]
@@ -20,6 +21,7 @@
 [ext_resource type="Animation" uid="uid://b6dtpps1uy2nt" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStart.tres" id="18_4rago"]
 [ext_resource type="Animation" uid="uid://ba40vvnwaedcj" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStopped.tres" id="19_dt7ql"]
 [ext_resource type="Animation" uid="uid://bo5c3xlqfygwd" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacAbility.tres" id="20_vccfx"]
+[ext_resource type="Animation" uid="uid://4thc6wfgxv25" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJEnd.tres" id="21_2708d"]
 [ext_resource type="Animation" uid="uid://j3vaa70b452d" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacBrake.tres" id="21_tbw32"]
 [ext_resource type="Animation" uid="uid://c0s0ciuetfwgb" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacFall.tres" id="22_6xukh"]
 [ext_resource type="Animation" uid="uid://bqdtpujgnful" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacJump.tres" id="23_s7cxs"]
@@ -30,6 +32,7 @@
 [ext_resource type="Animation" uid="uid://dlh5ct6vb1ac6" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacStopped.tres" id="28_6o6m1"]
 [ext_resource type="Animation" uid="uid://cw00bfmhw5akp" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaAbility.tres" id="29_f2xfq"]
 [ext_resource type="Animation" uid="uid://c7oyd2qmaod2a" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaBrake.tres" id="30_ce5b7"]
+[ext_resource type="Animation" uid="uid://rsk1o8juj1oo" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacEnd.tres" id="31_p8iae"]
 [ext_resource type="Animation" uid="uid://3ltbgsyry7vm" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaFall.tres" id="31_y3s7y"]
 [ext_resource type="Animation" uid="uid://b6bfume58wsee" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaJump.tres" id="32_6eauv"]
 [ext_resource type="Animation" uid="uid://vkdqgnmiw4u2" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaOver.tres" id="33_ripcy"]
@@ -41,6 +44,7 @@
 [ext_resource type="Animation" uid="uid://bvdtn3thm7ic5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokBrake.tres" id="39_shu8t"]
 [ext_resource type="Animation" uid="uid://u3ouurxl5dvo" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokFall.tres" id="40_7m05c"]
 [ext_resource type="Animation" uid="uid://lyxw7arietk" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokJump.tres" id="41_ek36d"]
+[ext_resource type="Animation" uid="uid://d2kb5uhw1y1c0" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaEnd.tres" id="41_plrpe"]
 [ext_resource type="Animation" uid="uid://dkp84nqo3ej5j" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokOver.tres" id="42_yi3ie"]
 [ext_resource type="Animation" uid="uid://cmmbh6m57h6mw" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokRun.tres" id="43_28rd3"]
 [ext_resource type="Animation" uid="uid://dvpn7ky8twvkp" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokSlide.tres" id="44_ik8gq"]
@@ -50,11 +54,13 @@
 [ext_resource type="Animation" uid="uid://q1rvu4plaoi8" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaBrake.tres" id="48_7gtfu"]
 [ext_resource type="Animation" uid="uid://dueour83fi5s" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaFall.tres" id="49_nvwl3"]
 [ext_resource type="Animation" uid="uid://brd71014srvh2" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaJump.tres" id="50_jk27s"]
+[ext_resource type="Animation" uid="uid://dyggbll3huwu5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokEnd.tres" id="51_qyvwv"]
 [ext_resource type="Animation" uid="uid://cpky1ny4wckcr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaOver.tres" id="51_xi2oo"]
 [ext_resource type="Animation" uid="uid://by60vsabo5pb5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaRun.tres" id="52_83jn3"]
 [ext_resource type="Animation" uid="uid://cxvx8p1v8yxkv" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaSlide.tres" id="53_50g4m"]
 [ext_resource type="Animation" uid="uid://cjrt3nhtnf0fj" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStart.tres" id="54_i6raq"]
 [ext_resource type="Animation" uid="uid://oh08wwr72s84" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStopped.tres" id="55_x4qns"]
+[ext_resource type="Animation" uid="uid://bruyl3qi6kolr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaEnd.tres" id="61_dansq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piiac"]
 size = Vector2(16, 47.875)
@@ -109,6 +115,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, -24)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_awalf"]
 _data = {
@@ -119,6 +137,7 @@ _data = {
 _data = {
 "AdienAbility": ExtResource("2_j7aex"),
 "AdienBrake": ExtResource("3_vxtpc"),
+"AdienEnd": ExtResource("11_x0m6y"),
 "AdienFall": ExtResource("4_mvev5"),
 "AdienJump": ExtResource("5_3wuvf"),
 "AdienOver": ExtResource("6_wy310"),
@@ -132,6 +151,7 @@ _data = {
 _data = {
 "DJAbility": ExtResource("11_bsy4r"),
 "DJBrake": ExtResource("12_dgmd8"),
+"DJEnd": ExtResource("21_2708d"),
 "DJFall": ExtResource("13_qxkr2"),
 "DJJump": ExtResource("14_ds2ma"),
 "DJOver": ExtResource("15_shxgg"),
@@ -145,6 +165,7 @@ _data = {
 _data = {
 "IsaacAbility": ExtResource("20_vccfx"),
 "IsaacBrake": ExtResource("21_tbw32"),
+"IsaacEnd": ExtResource("31_p8iae"),
 "IsaacFall": ExtResource("22_6xukh"),
 "IsaacJump": ExtResource("23_s7cxs"),
 "IsaacOver": ExtResource("24_3mmrp"),
@@ -158,6 +179,7 @@ _data = {
 _data = {
 "KorriaAbility": ExtResource("29_f2xfq"),
 "KorriaBrake": ExtResource("30_ce5b7"),
+"KorriaEnd": ExtResource("41_plrpe"),
 "KorriaFall": ExtResource("31_y3s7y"),
 "KorriaJump": ExtResource("32_6eauv"),
 "KorriaOver": ExtResource("33_ripcy"),
@@ -171,6 +193,7 @@ _data = {
 _data = {
 "LyvokAbility": ExtResource("38_viq6e"),
 "LyvokBrake": ExtResource("39_shu8t"),
+"LyvokEnd": ExtResource("51_qyvwv"),
 "LyvokFall": ExtResource("40_7m05c"),
 "LyvokJump": ExtResource("41_ek36d"),
 "LyvokOver": ExtResource("42_yi3ie"),
@@ -184,6 +207,7 @@ _data = {
 _data = {
 "SelenaAbility": ExtResource("47_e42e4"),
 "SelenaBrake": ExtResource("48_7gtfu"),
+"SelenaEnd": ExtResource("61_dansq"),
 "SelenaFall": ExtResource("49_nvwl3"),
 "SelenaJump": ExtResource("50_jk27s"),
 "SelenaOver": ExtResource("51_xi2oo"),
@@ -424,16 +448,8 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_awalf"),
-"AdienLibrary": SubResource("AnimationLibrary_0jk3t"),
-"DJLibrary": SubResource("AnimationLibrary_k3m7h"),
-"IsaacLibrary": SubResource("AnimationLibrary_e1fhj"),
-"KorriaLibrary": SubResource("AnimationLibrary_i2bw7"),
-"LyvokLibrary": SubResource("AnimationLibrary_r5lnm"),
-"SelenaLibrary": SubResource("AnimationLibrary_f40ca")
-}
 tree_root = SubResource("AnimationNodeStateMachine_eu8b0")
 anim_player = NodePath("../AnimationPlayer")
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

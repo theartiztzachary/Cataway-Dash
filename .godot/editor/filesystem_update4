@@ -1,0 +1,16 @@
+res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
+res://ScriptAssets/PlayScreenScripts/PlayControler.gd
+res://ScriptAssets/CharacterScripts/SelAnimations.gd
+res://SceneAssets/CharacterScenes/SelenaScn.tscn
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaBrake.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaFall.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaJump.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaRun.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaSlide.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStopped.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaAbility.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaOver.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStart.tres
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaEnd.tres
+res://ScriptAssets/StartScreenScripts/StartPlayButton.gd
+res://ReadMenNotes.txt

@@ -1,7 +1,8 @@
 ## BUGFIX LIST
-> what the fuck is going on with the animations oh god
+> sprite is no longer appearing (probalby due to animation work)
 
 ## IMPLEMENTATION LIST
+> full movement system implementation
 > finalize character stat numbers + guidelines for platform placements
 > at least 5 different blocks + set starting block
 > upscale to 1920

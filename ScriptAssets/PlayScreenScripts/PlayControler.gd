@@ -142,7 +142,7 @@ func _ready():
 	get_tree().get_root().add_child(play_character)
 	
 	#CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START #there is currently no start animation lmao
-	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.PLAY
+	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
 	
 	##Temp
 	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1
@@ -194,6 +194,7 @@ func _input(_event):
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
 		elif !(CharacterHandler.on_ground) && (CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN) && ability_ready:
+			print("Adien's ability is triggering.")
 			gravity_applied += jump_power
 			CharacterHandler.in_ability = true
 			ability_ready = false
@@ -280,6 +281,7 @@ func move_blocks(delta):
 			
 		if CharacterHandler.on_ground:
 			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
+				CharacterHandler.is_stopped = false
 				if current_speed < max_speed:
 					current_speed += (acceleration * delta)
 				elif current_speed >= max_speed:
@@ -375,8 +377,6 @@ func _on_star_coin():
 		star_dash_current_speed += star_dash_speed_addition
 	elif star_dash_active:
 		star_dash_current_speed += star_dash_speed_addition
-	else:
-		pass
 		
 ## Character Ability Functions
 # Selena - Bladesurge

@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy5sjhyuy8kys"]
+[gd_scene load_steps=3 format=3 uid="uid://cy5sjhyuy8kys"]
 
 [ext_resource type="Script" path="res://ScriptAssets/PlayScreenScripts/PlayControler.gd" id="1_aiy1x"]
+[ext_resource type="Script" path="res://ScriptAssets/StartScreenScripts/StartPlayButton.gd" id="1_j08ci"]
 
 [node name="PlayScreenScn" type="Node"]
 
 [node name="TestControl" type="Control" parent="."]
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
 offset_right = 141.0
@@ -17,18 +19,22 @@ offset_bottom = 23.0
 text = "Play Screen"
 
 [node name="CharacterSelectButton" type="Button" parent="TestControl"]
+z_index = 5
 layout_mode = 0
 offset_left = 2.0
 offset_top = 24.0
 offset_right = 137.0
 offset_bottom = 55.0
 text = "Character Select"
+script = ExtResource("1_j08ci")
 
 [node name="PlayControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 480.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_aiy1x")
 
 [node name="EndControl" type="Control" parent="."]
@@ -37,3 +43,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 480.0
+
+[connection signal="pressed" from="TestControl/CharacterSelectButton" to="TestControl/CharacterSelectButton" method="_on_pressed"]
