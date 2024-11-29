@@ -1,6 +1,6 @@
 [gd_resource type="Animation" load_steps=2 format=3 uid="uid://cjrt3nhtnf0fj"]
 
-[ext_resource type="Texture2D" uid="uid://ctmmvxevvsrwk" path="res://TestAssets/testVisuals/testCharacterSprites/testSelena/testSelenaBase.png" id="1_52gyx"]
+[ext_resource type="Texture2D" uid="uid://boft0313ky6kj" path="res://TestAssets/testVisuals/testCharacterSprites/testSelena/testSelenaStartSheet.png" id="1_l5w4v"]
 
 [resource]
 length = 0.4
@@ -44,26 +44,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/path = NodePath("Sprite2D:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [ExtResource("1_l5w4v")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:texture")
+tracks/4/path = NodePath("Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_52gyx")]
+"values": [0, 1, 2, 3]
 }
 tracks/5/type = "value"
 tracks/5/imported = false

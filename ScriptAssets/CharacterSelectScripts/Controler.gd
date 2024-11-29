@@ -30,9 +30,9 @@ func _ready():
 			currentCharacterAbility.set_text(CharacterHandler.isaacAbilityName)
 			currentAbilityDescription.set_text(CharacterHandler.isaacAbilityDescription)
 		CharacterHandler.Character.DJ:
-			currentCharacterName.set_text(CharacterHandler.DJName)
-			currentCharacterAbility.set_text(CharacterHandler.DJAbilityName)
-			currentAbilityDescription.set_text(CharacterHandler.DJAbilityDescription)
+			currentCharacterName.set_text(CharacterHandler.djName)
+			currentCharacterAbility.set_text(CharacterHandler.djAbilityName)
+			currentAbilityDescription.set_text(CharacterHandler.djAbilityDescription)
 		CharacterHandler.Character.KORRIA:
 			currentCharacterName.set_text(CharacterHandler.korriaName)
 			currentCharacterAbility.set_text(CharacterHandler.korriaAbilityName)

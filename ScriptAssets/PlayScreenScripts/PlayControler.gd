@@ -38,7 +38,7 @@ var above_midpoint = false
 var ability_ready = true
 
 # Selena - Bladesurge
-var bladesurge_cooldown #to be set during Alpha or Beta cycle
+var bladesurge_cooldown = 1 #to be set during Alpha or Beta cycle
 var bladesurge_cooldown_timer = 0
 
 # Isaac - Burnout
@@ -50,13 +50,13 @@ var star_dash_current_speed # will start at DJ's base max speed, and then added 
 
 # Korria - Calculated Decision
 var calculated_decision_active = false
-var calculated_decision_slow # to be set during Alpha or Beta cycle, will be invese decimal of the slow (ie 80% slow would be .20 variable)
+var calculated_decision_slow = .20 # to be set during Alpha or Beta cycle, will be invese decimal of the slow (ie 80% slow would be .20 variable)
 
 # Adien - Wind Step
 
 # Lyvok - Reality Warp
-var reality_warp_distance # to be set during Alpha or Beta cycle
-var reality_warp_cooldown # to be set during Alpha or Beta cycle
+var reality_warp_distance = 50 # to be set during Alpha or Beta cycle
+var reality_warp_cooldown = 1 # to be set during Alpha or Beta cycle
 var reality_warp_cooldown_timer = 0
 
 ## Block Management Variables
@@ -176,11 +176,13 @@ func _process(delta):
 		if !ability_ready:
 			if CharacterHandler.currentCharacter == CharacterHandler.Character.SELENA:
 				bladesurge_cooldown_timer += delta
-				if bladesurge_cooldown_timer == bladesurge_cooldown:
+				if bladesurge_cooldown_timer >= bladesurge_cooldown:
+					bladesurge_cooldown_timer = 0
 					ability_ready = true
 			elif CharacterHandler.currentCharacter == CharacterHandler.Character.LYVOK:
 				reality_warp_cooldown_timer += delta
-				if reality_warp_cooldown_timer == reality_warp_cooldown:
+				if reality_warp_cooldown_timer >= reality_warp_cooldown:
+					reality_warp_cooldown_timer = 0
 					ability_ready = true
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.OVER:
 		ending_game(delta)
@@ -194,7 +196,6 @@ func _input(_event):
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
 		elif !(CharacterHandler.on_ground) && (CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN) && ability_ready:
-			print("Adien's ability is triggering.")
 			gravity_applied += jump_power
 			CharacterHandler.in_ability = true
 			ability_ready = false
@@ -307,19 +308,11 @@ func move_blocks(delta):
 			if gravity_applied < 0:
 				CharacterHandler.is_jumping = false
 				CharacterHandler.is_falling = true
+				if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
+					CharacterHandler.in_ability = false
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
-			
-		#because positive Y is down and negative Y is up this looks inverted
-		if (!above_midpoint) && (absolute_y <= midpoint):
-			print("We went above the midpoint.")
-			print("Midpoint: " + str(midpoint))
-			print("Absolute Y: " + str(absolute_y))
-			above_midpoint = true
-		elif (above_midpoint) && (absolute_y > midpoint):
-			print("We went below the midpoint.")
-			above_midpoint = false
 	
 func add_block():
 	var block_to_load #will hold the variable that determines which block to load
@@ -404,7 +397,7 @@ func burnout_activated():
 func reality_warp_activated():
 	CharacterHandler.in_ability = true
 	for block in block_array:
-		block.position.x += reality_warp_distance
+		block.position.x -= reality_warp_distance
 	#might need to two-part animation - fade in and fade out
 	ability_ready = false
 	

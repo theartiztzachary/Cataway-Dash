@@ -1,470 +1,71 @@
-[gd_scene load_steps=133 format=3 uid="uid://di5fls25m8c7p"]
+[gd_scene load_steps=7 format=3 uid="uid://csrjevh164p7x"]
 
 [ext_resource type="Script" path="res://ScriptAssets/CharacterScripts/SelAnimations.gd" id="1_nnf63"]
-[ext_resource type="Animation" uid="uid://ctn7ndsp2b8w7" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienAbility.tres" id="2_j7aex"]
-[ext_resource type="Animation" uid="uid://2ldrfksf7yfv" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienBrake.tres" id="3_vxtpc"]
-[ext_resource type="Animation" uid="uid://b3156o7apeuam" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienFall.tres" id="4_mvev5"]
-[ext_resource type="Animation" uid="uid://b1wc2w42xhc3g" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienJump.tres" id="5_3wuvf"]
-[ext_resource type="Animation" uid="uid://bj0pcomtclvoc" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienOver.tres" id="6_wy310"]
-[ext_resource type="Animation" uid="uid://cds26e7eiat7l" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienRun.tres" id="7_byrsu"]
-[ext_resource type="Animation" uid="uid://3i0gpt3x28gk" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienSlide.tres" id="8_25jq0"]
-[ext_resource type="Animation" uid="uid://1rr86oj8t6xr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStart.tres" id="9_mtmm7"]
-[ext_resource type="Animation" uid="uid://c3e4c5kuwuvn" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStopped.tres" id="10_0fvo2"]
-[ext_resource type="Animation" uid="uid://bmi50lbnynwvm" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJAbility.tres" id="11_bsy4r"]
-[ext_resource type="Animation" uid="uid://bsoglp6yt4e06" path="res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienEnd.tres" id="11_x0m6y"]
-[ext_resource type="Animation" uid="uid://cujubqhf66i2r" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJBrake.tres" id="12_dgmd8"]
-[ext_resource type="Animation" uid="uid://gt4s4pk46n3u" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJFall.tres" id="13_qxkr2"]
-[ext_resource type="Animation" uid="uid://ddxins7mo7vmd" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJJump.tres" id="14_ds2ma"]
-[ext_resource type="Animation" uid="uid://c8entghl3hvnu" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJOver.tres" id="15_shxgg"]
-[ext_resource type="Animation" uid="uid://ddccs8v04pu4d" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJRun.tres" id="16_kcgab"]
-[ext_resource type="Animation" uid="uid://c34nj14e8qloq" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJSlide.tres" id="17_10hb5"]
-[ext_resource type="Animation" uid="uid://b6dtpps1uy2nt" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStart.tres" id="18_4rago"]
-[ext_resource type="Animation" uid="uid://ba40vvnwaedcj" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStopped.tres" id="19_dt7ql"]
-[ext_resource type="Animation" uid="uid://bo5c3xlqfygwd" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacAbility.tres" id="20_vccfx"]
-[ext_resource type="Animation" uid="uid://4thc6wfgxv25" path="res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJEnd.tres" id="21_2708d"]
-[ext_resource type="Animation" uid="uid://j3vaa70b452d" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacBrake.tres" id="21_tbw32"]
-[ext_resource type="Animation" uid="uid://c0s0ciuetfwgb" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacFall.tres" id="22_6xukh"]
-[ext_resource type="Animation" uid="uid://bqdtpujgnful" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacJump.tres" id="23_s7cxs"]
-[ext_resource type="Animation" uid="uid://cqk8qypf6ceym" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacOver.tres" id="24_3mmrp"]
-[ext_resource type="Animation" uid="uid://dm08lo8wgjrhc" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacRun.tres" id="25_mo8e7"]
-[ext_resource type="Animation" uid="uid://byby58v5j5ae5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacSlide.tres" id="26_qwwyl"]
-[ext_resource type="Animation" uid="uid://lh2dbauco0yn" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacStart.tres" id="27_0o7s7"]
-[ext_resource type="Animation" uid="uid://dlh5ct6vb1ac6" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacStopped.tres" id="28_6o6m1"]
-[ext_resource type="Animation" uid="uid://cw00bfmhw5akp" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaAbility.tres" id="29_f2xfq"]
-[ext_resource type="Animation" uid="uid://c7oyd2qmaod2a" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaBrake.tres" id="30_ce5b7"]
-[ext_resource type="Animation" uid="uid://rsk1o8juj1oo" path="res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations/IsaacEnd.tres" id="31_p8iae"]
-[ext_resource type="Animation" uid="uid://3ltbgsyry7vm" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaFall.tres" id="31_y3s7y"]
-[ext_resource type="Animation" uid="uid://b6bfume58wsee" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaJump.tres" id="32_6eauv"]
-[ext_resource type="Animation" uid="uid://vkdqgnmiw4u2" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaOver.tres" id="33_ripcy"]
-[ext_resource type="Animation" uid="uid://bwdec3xt51quu" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaRun.tres" id="34_1hjsk"]
-[ext_resource type="Animation" uid="uid://bfdjegk0a41fs" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaSlide.tres" id="35_etkq5"]
-[ext_resource type="Animation" uid="uid://c836u4153e4vq" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaStart.tres" id="36_6n86q"]
-[ext_resource type="Animation" uid="uid://87gv1b6q6dlu" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaStopped.tres" id="37_n8lib"]
-[ext_resource type="Animation" uid="uid://b48pbx464xeif" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokAbility.tres" id="38_viq6e"]
-[ext_resource type="Animation" uid="uid://bvdtn3thm7ic5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokBrake.tres" id="39_shu8t"]
-[ext_resource type="Animation" uid="uid://u3ouurxl5dvo" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokFall.tres" id="40_7m05c"]
-[ext_resource type="Animation" uid="uid://lyxw7arietk" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokJump.tres" id="41_ek36d"]
-[ext_resource type="Animation" uid="uid://d2kb5uhw1y1c0" path="res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations/KorriaEnd.tres" id="41_plrpe"]
-[ext_resource type="Animation" uid="uid://dkp84nqo3ej5j" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokOver.tres" id="42_yi3ie"]
-[ext_resource type="Animation" uid="uid://cmmbh6m57h6mw" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokRun.tres" id="43_28rd3"]
-[ext_resource type="Animation" uid="uid://dvpn7ky8twvkp" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokSlide.tres" id="44_ik8gq"]
-[ext_resource type="Animation" uid="uid://dmvpf1uuu47f3" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokStart.tres" id="45_ho0u5"]
-[ext_resource type="Animation" uid="uid://2y6vstw7gn3v" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokStopped.tres" id="46_jd7el"]
-[ext_resource type="Animation" uid="uid://bfkjm4pchcau2" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaAbility.tres" id="47_e42e4"]
-[ext_resource type="Animation" uid="uid://q1rvu4plaoi8" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaBrake.tres" id="48_7gtfu"]
-[ext_resource type="Animation" uid="uid://dueour83fi5s" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaFall.tres" id="49_nvwl3"]
-[ext_resource type="Animation" uid="uid://brd71014srvh2" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaJump.tres" id="50_jk27s"]
-[ext_resource type="Animation" uid="uid://dyggbll3huwu5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations/LyvokEnd.tres" id="51_qyvwv"]
-[ext_resource type="Animation" uid="uid://cpky1ny4wckcr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaOver.tres" id="51_xi2oo"]
-[ext_resource type="Animation" uid="uid://by60vsabo5pb5" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaRun.tres" id="52_83jn3"]
-[ext_resource type="Animation" uid="uid://cxvx8p1v8yxkv" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaSlide.tres" id="53_50g4m"]
-[ext_resource type="Animation" uid="uid://cjrt3nhtnf0fj" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStart.tres" id="54_i6raq"]
-[ext_resource type="Animation" uid="uid://oh08wwr72s84" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaStopped.tres" id="55_x4qns"]
-[ext_resource type="Animation" uid="uid://bruyl3qi6kolr" path="res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations/SelenaEnd.tres" id="61_dansq"]
+[ext_resource type="Texture2D" uid="uid://boft0313ky6kj" path="res://TestAssets/testVisuals/testCharacterSprites/testSelena/testSelenaStartSheet.png" id="2_gsue3"]
+[ext_resource type="AnimationLibrary" uid="uid://r4qkcxdlcm6b" path="res://ResourceFiles/SelenaLibrary.res" id="7_6gkuw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_piiac"]
-size = Vector2(16, 47.875)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mgdf"]
+size = Vector2(16, 48)
 
-[sub_resource type="Animation" id="Animation_nq6lp"]
+[sub_resource type="Animation" id="Animation_36h0h"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [null]
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -24)]
+"update": 1,
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/path = NodePath("Sprite2D:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -24)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:hframes")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
+"values": [ExtResource("2_gsue3")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_awalf"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kyfsb"]
 _data = {
-"RESET": SubResource("Animation_nq6lp")
+"RESET": SubResource("Animation_36h0h")
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jk3t"]
-_data = {
-"AdienAbility": ExtResource("2_j7aex"),
-"AdienBrake": ExtResource("3_vxtpc"),
-"AdienEnd": ExtResource("11_x0m6y"),
-"AdienFall": ExtResource("4_mvev5"),
-"AdienJump": ExtResource("5_3wuvf"),
-"AdienOver": ExtResource("6_wy310"),
-"AdienRun": ExtResource("7_byrsu"),
-"AdienSlide": ExtResource("8_25jq0"),
-"AdienStart": ExtResource("9_mtmm7"),
-"AdienStopped": ExtResource("10_0fvo2")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3m7h"]
-_data = {
-"DJAbility": ExtResource("11_bsy4r"),
-"DJBrake": ExtResource("12_dgmd8"),
-"DJEnd": ExtResource("21_2708d"),
-"DJFall": ExtResource("13_qxkr2"),
-"DJJump": ExtResource("14_ds2ma"),
-"DJOver": ExtResource("15_shxgg"),
-"DJRun": ExtResource("16_kcgab"),
-"DJSlide": ExtResource("17_10hb5"),
-"DJStart": ExtResource("18_4rago"),
-"DJStopped": ExtResource("19_dt7ql")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1fhj"]
-_data = {
-"IsaacAbility": ExtResource("20_vccfx"),
-"IsaacBrake": ExtResource("21_tbw32"),
-"IsaacEnd": ExtResource("31_p8iae"),
-"IsaacFall": ExtResource("22_6xukh"),
-"IsaacJump": ExtResource("23_s7cxs"),
-"IsaacOver": ExtResource("24_3mmrp"),
-"IsaacRun": ExtResource("25_mo8e7"),
-"IsaacSlide": ExtResource("26_qwwyl"),
-"IsaacStart": ExtResource("27_0o7s7"),
-"IsaacStopped": ExtResource("28_6o6m1")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2bw7"]
-_data = {
-"KorriaAbility": ExtResource("29_f2xfq"),
-"KorriaBrake": ExtResource("30_ce5b7"),
-"KorriaEnd": ExtResource("41_plrpe"),
-"KorriaFall": ExtResource("31_y3s7y"),
-"KorriaJump": ExtResource("32_6eauv"),
-"KorriaOver": ExtResource("33_ripcy"),
-"KorriaRun": ExtResource("34_1hjsk"),
-"KorriaSlide": ExtResource("35_etkq5"),
-"KorriaStart": ExtResource("36_6n86q"),
-"KorriaStopped": ExtResource("37_n8lib")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5lnm"]
-_data = {
-"LyvokAbility": ExtResource("38_viq6e"),
-"LyvokBrake": ExtResource("39_shu8t"),
-"LyvokEnd": ExtResource("51_qyvwv"),
-"LyvokFall": ExtResource("40_7m05c"),
-"LyvokJump": ExtResource("41_ek36d"),
-"LyvokOver": ExtResource("42_yi3ie"),
-"LyvokRun": ExtResource("43_28rd3"),
-"LyvokSlide": ExtResource("44_ik8gq"),
-"LyvokStart": ExtResource("45_ho0u5"),
-"LyvokStopped": ExtResource("46_jd7el")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f40ca"]
-_data = {
-"SelenaAbility": ExtResource("47_e42e4"),
-"SelenaBrake": ExtResource("48_7gtfu"),
-"SelenaEnd": ExtResource("61_dansq"),
-"SelenaFall": ExtResource("49_nvwl3"),
-"SelenaJump": ExtResource("50_jk27s"),
-"SelenaOver": ExtResource("51_xi2oo"),
-"SelenaRun": ExtResource("52_83jn3"),
-"SelenaSlide": ExtResource("53_50g4m"),
-"SelenaStart": ExtResource("54_i6raq"),
-"SelenaStopped": ExtResource("55_x4qns")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6cjq1"]
-animation = &"SelenaLibrary/SelenaAbility"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5iyyf"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_6cjq1")
-nodes/Animation/position = Vector2(220, 180)
-nodes/output/position = Vector2(540, 180)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jemv8"]
-animation = &"SelenaLibrary/SelenaBrake"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_20lko"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_jemv8")
-nodes/Animation/position = Vector2(200, 140)
-nodes/output/position = Vector2(540, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_75yg4"]
-animation = &"SelenaLibrary/SelenaFall"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q60rg"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_75yg4")
-nodes/Animation/position = Vector2(180, 160)
-nodes/output/position = Vector2(460, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lc3sn"]
-animation = &"SelenaLibrary/SelenaOver"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ulduv"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_lc3sn")
-nodes/Animation/position = Vector2(200, 140)
-nodes/output/position = Vector2(580, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n3i3e"]
-animation = &"SelenaLibrary/SelenaStart"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v4xia"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_n3i3e")
-nodes/Animation/position = Vector2(200, 140)
-nodes/output/position = Vector2(520, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0nv0"]
-animation = &"SelenaLibrary/SelenaJump"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0xh30"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_c0nv0")
-nodes/Animation/position = Vector2(140, 160)
-nodes/output/position = Vector2(460, 180)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_quabg"]
-animation = &"SelenaLibrary/SelenaRun"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rh6x6"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_quabg")
-nodes/Animation/position = Vector2(140, 160)
-nodes/output/position = Vector2(500, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f86br"]
-animation = &"SelenaLibrary/SelenaSlide"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6ys2c"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_f86br")
-nodes/Animation/position = Vector2(200, 180)
-nodes/output/position = Vector2(480, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gdar2"]
-animation = &"SelenaLibrary/SelenaStopped"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nlev1"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_gdar2")
-nodes/Animation/position = Vector2(180, 160)
-nodes/output/position = Vector2(560, 160)
-node_connections = [&"output", 0, &"Animation"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ote88"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_21mvs"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ge16q"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_of6f7"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pqhb3"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tundw"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r88w0"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_21u1y"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_am4th"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_01b2c"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8trw6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_buads"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ae21f"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5kybw"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iyst2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x6ywk"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qr2ye"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jnnld"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cyl6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ioi1h"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m1gp3"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2wcvo"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l0u08"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tflyq"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g6c10"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgoi8"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ipk8r"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ma08d"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nrffy"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4sacm"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5lo8i"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_huvoy"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bn0kc"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_liycn"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3q8yw"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_puvo6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d01go"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3yo45"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p3jl4"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_glhe8"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b6lhr"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y1dbr"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p18kn"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eu8b0"]
-states/Ability/node = SubResource("AnimationNodeBlendTree_5iyyf")
-states/Ability/position = Vector2(766.5, 359)
-states/Brake/node = SubResource("AnimationNodeBlendTree_20lko")
-states/Brake/position = Vector2(908.25, 163.416)
-states/End/position = Vector2(1320, 199.688)
-states/Fall/node = SubResource("AnimationNodeBlendTree_q60rg")
-states/Fall/position = Vector2(350.25, 163.831)
-states/GameOver/node = SubResource("AnimationNodeBlendTree_ulduv")
-states/GameOver/position = Vector2(765.75, 57.75)
-states/GameStart/node = SubResource("AnimationNodeBlendTree_v4xia")
-states/GameStart/position = Vector2(207.5, 210.993)
-states/Jump/node = SubResource("AnimationNodeBlendTree_0xh30")
-states/Jump/position = Vector2(352.625, 265.5)
-states/Run/node = SubResource("AnimationNodeBlendTree_rh6x6")
-states/Run/position = Vector2(473.5, 56)
-states/Slide/node = SubResource("AnimationNodeBlendTree_6ys2c")
-states/Slide/position = Vector2(473.75, 359.5)
-states/Start/position = Vector2(53, 211.824)
-states/Stopped/node = SubResource("AnimationNodeBlendTree_nlev1")
-states/Stopped/position = Vector2(909.5, 266)
-transitions = ["GameOver", "End", SubResource("AnimationNodeStateMachineTransition_ote88"), "Start", "GameStart", SubResource("AnimationNodeStateMachineTransition_21mvs"), "GameStart", "Run", SubResource("AnimationNodeStateMachineTransition_ge16q"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_of6f7"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_pqhb3"), "Run", "Slide", SubResource("AnimationNodeStateMachineTransition_tundw"), "Run", "Ability", SubResource("AnimationNodeStateMachineTransition_r88w0"), "Run", "Brake", SubResource("AnimationNodeStateMachineTransition_21u1y"), "Run", "GameOver", SubResource("AnimationNodeStateMachineTransition_am4th"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_01b2c"), "Fall", "Slide", SubResource("AnimationNodeStateMachineTransition_8trw6"), "Fall", "Ability", SubResource("AnimationNodeStateMachineTransition_buads"), "Fall", "Stopped", SubResource("AnimationNodeStateMachineTransition_ae21f"), "Fall", "Brake", SubResource("AnimationNodeStateMachineTransition_5kybw"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_iyst2"), "Fall", "GameOver", SubResource("AnimationNodeStateMachineTransition_x6ywk"), "Jump", "Slide", SubResource("AnimationNodeStateMachineTransition_qr2ye"), "Jump", "Ability", SubResource("AnimationNodeStateMachineTransition_jnnld"), "Jump", "GameOver", SubResource("AnimationNodeStateMachineTransition_8cyl6"), "Slide", "Ability", SubResource("AnimationNodeStateMachineTransition_ioi1h"), "Slide", "Stopped", SubResource("AnimationNodeStateMachineTransition_m1gp3"), "Slide", "Brake", SubResource("AnimationNodeStateMachineTransition_2wcvo"), "Slide", "GameOver", SubResource("AnimationNodeStateMachineTransition_l0u08"), "Slide", "Run", SubResource("AnimationNodeStateMachineTransition_tflyq"), "Slide", "Fall", SubResource("AnimationNodeStateMachineTransition_g6c10"), "Slide", "Jump", SubResource("AnimationNodeStateMachineTransition_dgoi8"), "Ability", "Stopped", SubResource("AnimationNodeStateMachineTransition_ipk8r"), "Ability", "Brake", SubResource("AnimationNodeStateMachineTransition_ma08d"), "Ability", "GameOver", SubResource("AnimationNodeStateMachineTransition_nrffy"), "Ability", "Run", SubResource("AnimationNodeStateMachineTransition_4sacm"), "Ability", "Fall", SubResource("AnimationNodeStateMachineTransition_5lo8i"), "Ability", "Jump", SubResource("AnimationNodeStateMachineTransition_huvoy"), "Ability", "Slide", SubResource("AnimationNodeStateMachineTransition_bn0kc"), "Stopped", "Run", SubResource("AnimationNodeStateMachineTransition_liycn"), "Stopped", "Jump", SubResource("AnimationNodeStateMachineTransition_3q8yw"), "Stopped", "Ability", SubResource("AnimationNodeStateMachineTransition_puvo6"), "Brake", "GameOver", SubResource("AnimationNodeStateMachineTransition_d01go"), "Brake", "Run", SubResource("AnimationNodeStateMachineTransition_3yo45"), "Brake", "Fall", SubResource("AnimationNodeStateMachineTransition_p3jl4"), "Brake", "Jump", SubResource("AnimationNodeStateMachineTransition_glhe8"), "Brake", "Slide", SubResource("AnimationNodeStateMachineTransition_b6lhr"), "Brake", "Ability", SubResource("AnimationNodeStateMachineTransition_y1dbr"), "Brake", "Stopped", SubResource("AnimationNodeStateMachineTransition_p18kn")]
-graph_offset = Vector2(0, 5.89113)
 
 [node name="SelenaScn" type="CharacterBody2D"]
 script = ExtResource("1_nnf63")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
-scale = Vector2(4, 1)
-hframes = 4
+texture = ExtResource("2_gsue3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
 position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_piiac")
+shape = SubResource("RectangleShape2D_2mgdf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_awalf"),
-"AdienLibrary": SubResource("AnimationLibrary_0jk3t"),
-"DJLibrary": SubResource("AnimationLibrary_k3m7h"),
-"IsaacLibrary": SubResource("AnimationLibrary_e1fhj"),
-"KorriaLibrary": SubResource("AnimationLibrary_i2bw7"),
-"LyvokLibrary": SubResource("AnimationLibrary_r5lnm"),
-"SelenaLibrary": SubResource("AnimationLibrary_f40ca")
+"": SubResource("AnimationLibrary_kyfsb"),
+"SelenaLibrary": ExtResource("7_6gkuw")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_eu8b0")
-anim_player = NodePath("../AnimationPlayer")
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]
-[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
