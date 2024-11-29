@@ -1,11 +1,12 @@
+res://ResourceFiles
+res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations
+res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations
+res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations
+res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations
+res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations
+res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations
 D:/Zenith and Nadir Sagas/Cataway Dash Rebuild
 res://SceneAssets/StartScreenScenes
-res://SceneAssets/CharacterScenes/CharacterAnimations/LyvokAnimations
-res://SceneAssets/CharacterScenes/CharacterAnimations/KorriaAnimations
-res://SceneAssets/CharacterScenes/CharacterAnimations/IsaacAnimations
-res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations
-res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations
-res://SceneAssets/CharacterScenes/CharacterAnimations/SelenaAnimations
 res://ScriptAssets/CharacterScripts
 res://ScriptAssets/GlobalScripts
 res://TestAssets/testScripts

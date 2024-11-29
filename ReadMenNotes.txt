@@ -1,7 +1,9 @@
 ## BUGFIX LIST
-> what the fuck is going on with the animations oh god
 
 ## IMPLEMENTATION LIST
+> adien has a two-part animation for his double jump (first half should not be looped, second half should be)
+> lyvok's animations need to include the "disconnect" between teleport points
+> full movement system implementation
 > finalize character stat numbers + guidelines for platform placements
 > at least 5 different blocks + set starting block
 > upscale to 1920
