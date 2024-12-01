@@ -1,2 +1,2 @@
-res://SceneAssets/CharacterScenes/AdienScn.tscn
-res://docs/CODEOWNERS.txt
+res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
+res://ScriptAssets/PlayScreenScripts/PlayControler.gd

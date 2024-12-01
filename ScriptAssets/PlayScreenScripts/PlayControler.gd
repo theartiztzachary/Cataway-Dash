@@ -15,18 +15,18 @@ var max_speed
 var brake_power
 
 var jump_power
-var gravity_acceleration #to be set once Pre-Alpha is over
+var gravity_acceleration
 var gravity_applied = 0
-var gravity_max #to be set once Pre-Alpha is over
+var gravity_max
 
 var slide_brake 
-var slide_boost #to be set during Alpha cycle
+var slide_boost 
 var slide_extension_active = false
-var slide_extension_time #to be set during Alpha cycle
+var slide_extension_time 
 var slide_extension_timer = 0
 
 var coyote_time_active = false
-var coyote_time #to be set during Alpha cycle
+var coyote_time
 var coyote_time_timer = 0
 
 ## 'Middle of the Screen' for camera fix
@@ -38,25 +38,25 @@ var above_midpoint = false
 var ability_ready = true
 
 # Selena - Bladesurge
-var bladesurge_cooldown = 1 #to be set during Alpha or Beta cycle
+var bladesurge_cooldown = 1 
 var bladesurge_cooldown_timer = 0
 
 # Isaac - Burnout
 
 # DJ - Star Dash
 var star_dash_active = false
-var star_dash_speed_addition # to be set during Alpha or Beta cycle
+var star_dash_speed_addition = 5
 var star_dash_current_speed # will start at DJ's base max speed, and then added to
 
 # Korria - Calculated Decision
 var calculated_decision_active = false
-var calculated_decision_slow = .20 # to be set during Alpha or Beta cycle, will be invese decimal of the slow (ie 80% slow would be .20 variable)
+var calculated_decision_slow = .20 # invese decimal of the slow (ie 80% slow would be .20 variable)
 
 # Adien - Wind Step
 
 # Lyvok - Reality Warp
-var reality_warp_distance = 50 # to be set during Alpha or Beta cycle
-var reality_warp_cooldown = 1 # to be set during Alpha or Beta cycle
+var reality_warp_distance = 50 
+var reality_warp_cooldown = 1 
 var reality_warp_cooldown_timer = 0
 
 ## Block Management Variables
@@ -105,6 +105,8 @@ func _ready():
 			brake_power = TestCharacterStats.dj_brake_power
 			jump_power = TestCharacterStats.dj_jump_power
 			slide_brake = TestCharacterStats.dj_slide_brake
+			
+			star_dash_current_speed = TestCharacterStats.dj_max_speed
 		CharacterHandler.Character.KORRIA:
 			var korria_scene = ResourceLoader.load('res://SceneAssets/CharacterScenes/KorriaScn.tscn')
 			play_character = korria_scene.instantiate()
@@ -141,7 +143,6 @@ func _ready():
 	play_character.z_index = 1
 	get_tree().get_root().add_child(play_character)
 	
-	#CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START #there is currently no start animation lmao
 	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
 	
 	##Temp
@@ -262,6 +263,7 @@ func block_initialization(): #loads 3 blocks on startup
 		block_count += 1
 		
 func move_blocks(delta):
+	var movement_tick = 0
 	for block in block_array:
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			block.position.x -= (current_speed * delta * calculated_decision_slow)
@@ -269,16 +271,26 @@ func move_blocks(delta):
 			
 			if above_midpoint:
 				block.psotion.y = (gravity_applied * delta * calculated_decision_slow)
-			elif !above_midpoint:
+			elif !above_midpoint && movement_tick == 0:
 				play_character.position.y -= (gravity_applied * delta)
+				movement_tick += 1
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
 			absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
 			
 			if above_midpoint:
 				block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
-			elif !above_midpoint:
+			elif !above_midpoint && movement_tick == 0:
 				play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
+				movement_tick += 1
+		
+		# this looks flipped bc origin is top left
+		if above_midpoint && (absolute_y > midpoint):
+			above_midpoint = false
+		elif !above_midpoint && (absolute_y < midpoint):
+			print('The midpoint is: ' + str(midpoint))
+			print('The absolute Y is: ' + str(absolute_y))
+			above_midpoint = true
 			
 		if CharacterHandler.on_ground:
 			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
