@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
 ::res://::1733069964
 README.md::TextFile::-1::1732386740::0::1::::<><>::
-::res://docs/::1733069869
+::res://docs/::1733076639
 CODEOWNERS.txt::TextFile::-1::1733069869::0::1::::<><>::
-ReadMenNotes.txt::TextFile::-1::1733069869::0::1::::<><>::
+ReadMenNotes.txt::TextFile::-1::1733076639::0::1::::<><>::
 ::res://ResourceFiles/::1733069869
 AdienLibrary.res::AnimationLibrary::4304193293370623928::1733069869::0::1::::<><>::uid://ctn7ndsp2b8w7::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienAbility.tres<>uid://2ldrfksf7yfv::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienBrake.tres<>uid://bsoglp6yt4e06::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienEnd.tres<>uid://b3156o7apeuam::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienFall.tres<>uid://b1wc2w42xhc3g::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienJump.tres<>uid://bj0pcomtclvoc::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienOver.tres<>uid://cds26e7eiat7l::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienRun.tres<>uid://3i0gpt3x28gk::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienSlide.tres<>uid://1rr86oj8t6xr::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStart.tres<>uid://c3e4c5kuwuvn::::res://SceneAssets/CharacterScenes/CharacterAnimations/AdienAnimations/AdienStopped.tres
 DJLibrary.res::AnimationLibrary::4422221883491698189::1733069869::0::1::::<><>::uid://bmi50lbnynwvm::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJAbility.tres<>uid://cujubqhf66i2r::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJBrake.tres<>uid://4thc6wfgxv25::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJEnd.tres<>uid://gt4s4pk46n3u::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJFall.tres<>uid://ddxins7mo7vmd::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJJump.tres<>uid://c8entghl3hvnu::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJOver.tres<>uid://ddccs8v04pu4d::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJRun.tres<>uid://c34nj14e8qloq::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJSlide.tres<>uid://b6dtpps1uy2nt::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStart.tres<>uid://ba40vvnwaedcj::::res://SceneAssets/CharacterScenes/CharacterAnimations/DJAnimations/DJStopped.tres
@@ -100,8 +100,8 @@ CreditsScn.tscn::PackedScene::7450817288674943149::1732386740::0::1::::<><>::res
 How2PlayScn.tscn::PackedScene::1594981297759161394::1732386740::0::1::::<><>::res://ScriptAssets/How2PlayScripts/ControlsButton.gd<>res://ScriptAssets/How2PlayScripts/StartButton.gd<>res://ScriptAssets/How2PlayScripts/PlayButton.gd
 ::res://SceneAssets/OptionsSceens/::1732386740
 OptionsScn.tscn::PackedScene::5605909376488493274::1732386740::0::1::::<><>::res://ScriptAssets/OptionsScreenScripts/StartButton.gd<>res://ScriptAssets/OptionsScreenScripts/OptionsControl.gd<>res://ScriptAssets/OptionsScreenScripts/ControlsButton.gd
-::res://SceneAssets/PlayScreenScenes/::1733069869
-PlayScreenScn.tscn::PackedScene::6520414331016559986::1733069869::0::1::::<><>::res://ScriptAssets/PlayScreenScripts/PlayControler.gd<>res://ScriptAssets/StartScreenScripts/StartPlayButton.gd
+::res://SceneAssets/PlayScreenScenes/::1733076730
+PlayScreenScn.tscn::PackedScene::6520414331016559986::1733076730::0::1::::<><>::res://ScriptAssets/PlayScreenScripts/PlayControler.gd<>res://ScriptAssets/StartScreenScripts/StartPlayButton.gd
 ::res://SceneAssets/StartScreenScenes/::1732386740
 StartScreenScn.tscn::PackedScene::6716632483276435338::1732386740::0::1::::<><>::res://ScriptAssets/StartScreenScripts/StartScreenControl.gd<>res://ScriptAssets/StartScreenScripts/StartPlayButton.gd<>uid://bxk0l46ne1aj0::::res://TestAssets/testVisuals/testStartScreenVisuals/test_SelenaPortrait.png<>res://ScriptAssets/StartScreenScripts/StartControlsButton.gd<>res://ScriptAssets/StartScreenScripts/How2PlayButton.gd<>res://ScriptAssets/StartScreenScripts/OptionsButton.gd<>res://ScriptAssets/StartScreenScripts/CreditsButton.gd<>res://ScriptAssets/StartScreenScripts/QuitButton.gd
 ::res://ScriptAssets/::1732386740
@@ -143,8 +143,8 @@ SlideRebind.gd::GDScript::-1::1732386740::0::1::::<>Popup<>::
 StartButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
 ::res://ScriptAssets/CreditsScripts/::1732386740
 StartButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
-::res://ScriptAssets/GlobalScripts/::1732386740
-CharacterHandler.gd::GDScript::-1::1732386740::0::1::::<>Node<>::
+::res://ScriptAssets/GlobalScripts/::1733073545
+CharacterHandler.gd::GDScript::-1::1733073545::0::1::::<>Node<>::
 SceneHandler.gd::GDScript::-1::1732386740::0::1::::<>Node<>::
 ::res://ScriptAssets/How2PlayScripts/::1732386740
 ControlsButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
@@ -154,8 +154,8 @@ StartButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
 ControlsButton.gd::GDScript::-1::1732386740::0::1::::<>Node<>::
 OptionsControl.gd::GDScript::-1::1732386740::0::1::::<>Control<>::
 StartButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
-::res://ScriptAssets/PlayScreenScripts/::1733069869
-PlayControler.gd::GDScript::-1::1733069869::0::1::::<>Control<>::
+::res://ScriptAssets/PlayScreenScripts/::1733076639
+PlayControler.gd::GDScript::-1::1733076639::0::1::::<>Control<>::
 ::res://ScriptAssets/StartScreenScripts/::1732472935
 CreditsButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
 How2PlayButton.gd::GDScript::-1::1732386740::0::1::::<>Button<>::
@@ -188,14 +188,14 @@ JumpField.gd::GDScript::-1::1732386740::0::1::::<>LineEdit<>::
 MaxSpeedField.gd::GDScript::-1::1732386740::0::1::::<>LineEdit<>::
 PlatHeightField.gd::GDScript::-1::1732386740::0::1::::<>LineEdit<>::
 ::res://TestAssets/testVisuals/::1732386740
-::res://TestAssets/testVisuals/testBlockVisuals/::1732464560
+::res://TestAssets/testVisuals/testBlockVisuals/::1733069967
 alphaTestBlockBackground.png::CompressedTexture2D::3700289865180428423::1732386740::1733069967::1::::<><>::
 alphaTestFloor.png::CompressedTexture2D::515608965105587941::1732386740::1733069967::1::::<><>::
 testObstacle.png::CompressedTexture2D::1634420008164155709::1732386740::1733069967::1::::<><>::
 testPlatform.png::CompressedTexture2D::2824052213579816397::1732386740::1733069967::1::::<><>::
 testStarCoin.png::CompressedTexture2D::4210301377574756237::1732386740::1733069967::1::::<><>::
 ::res://TestAssets/testVisuals/testCharacterSprites/::1732386740
-::res://TestAssets/testVisuals/testCharacterSprites/testAdien/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testAdien/::1733069967
 testAdienAbility.png::CompressedTexture2D::4485053651831991910::1732386740::1733069967::1::::<><>::
 testAdienBase.png::CompressedTexture2D::4522951998961454069::1732386740::1733069967::1::::<><>::
 testAdienBrake.png::CompressedTexture2D::7564918072066761173::1732386740::1733069967::1::::<><>::
@@ -206,7 +206,7 @@ testAdienOver.png::CompressedTexture2D::4815954587430539545::1732386740::1733069
 testAdienRun.png::CompressedTexture2D::813486284230039644::1732386740::1733069967::1::::<><>::
 testAdienSlide.png::CompressedTexture2D::6142630370860866735::1732386740::1733069967::1::::<><>::
 testAdienStopped.png::CompressedTexture2D::361918563172254661::1732386740::1733069967::1::::<><>::
-::res://TestAssets/testVisuals/testCharacterSprites/testDJ/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testDJ/::1733069967
 testDJAbility.png::CompressedTexture2D::9106501114137830428::1732386740::1733069967::1::::<><>::
 testDJBase.png::CompressedTexture2D::5673068452955548938::1732386740::1733069967::1::::<><>::
 testDJBrake.png::CompressedTexture2D::8382813859075595166::1732386740::1733069967::1::::<><>::
@@ -217,7 +217,7 @@ testDJOver.png::CompressedTexture2D::7095217654525995138::1732386740::1733069967
 testDJRun.png::CompressedTexture2D::793580490527761740::1732386740::1733069967::1::::<><>::
 testDJSlide.png::CompressedTexture2D::1569281268525617689::1732386740::1733069967::1::::<><>::
 testDJStopped.png::CompressedTexture2D::3932186001969184776::1732386740::1733069967::1::::<><>::
-::res://TestAssets/testVisuals/testCharacterSprites/testIsaac/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testIsaac/::1733069967
 testIsaacAbility.png::CompressedTexture2D::6514666473115184405::1732386740::1733069967::1::::<><>::
 testIsaacBase.png::CompressedTexture2D::2777001232684094912::1732386740::1733069967::1::::<><>::
 testIsaacBrake.png::CompressedTexture2D::8691038438399135611::1732386740::1733069967::1::::<><>::
@@ -228,7 +228,7 @@ testIsaacOver.png::CompressedTexture2D::2596320807982110365::1732386740::1733069
 testIsaacRun.png::CompressedTexture2D::6597666948599944927::1732386740::1733069967::1::::<><>::
 testIsaacSlide.png::CompressedTexture2D::5349192864268939981::1732386740::1733069967::1::::<><>::
 testIsaacStopped.png::CompressedTexture2D::2196074876281003512::1732386740::1733069967::1::::<><>::
-::res://TestAssets/testVisuals/testCharacterSprites/testKorria/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testKorria/::1733069967
 testKorriaAbility.png::CompressedTexture2D::914198308417546004::1732386740::1733069967::1::::<><>::
 testKorriaBase.png::CompressedTexture2D::500395873361796850::1732386740::1733069967::1::::<><>::
 testKorriaBrake.png::CompressedTexture2D::1855354034006659605::1732386740::1733069967::1::::<><>::
@@ -239,7 +239,7 @@ testKorriaOver.png::CompressedTexture2D::1749742063688724687::1732386740::173306
 testKorriaRun.png::CompressedTexture2D::5372127413637832980::1732386740::1733069966::1::::<><>::
 testKorriaSlide.png::CompressedTexture2D::1353328225056810116::1732386740::1733069966::1::::<><>::
 testKorriaStopped.png::CompressedTexture2D::1554347217287723412::1732386740::1733069966::1::::<><>::
-::res://TestAssets/testVisuals/testCharacterSprites/testLyvok/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testLyvok/::1733069967
 testLyvokAbility.png::CompressedTexture2D::771708916805284103::1732386740::1733069966::1::::<><>::
 testLyvokBase.png::CompressedTexture2D::7014707393213799771::1732386740::1733069966::1::::<><>::
 testLyvokBrake.png::CompressedTexture2D::7402218127749919421::1732386740::1733069966::1::::<><>::
@@ -250,7 +250,7 @@ testLyvokOver.png::CompressedTexture2D::3231059009070250697::1732386740::1733069
 testLyvokRun.png::CompressedTexture2D::1109823372344947706::1732386740::1733069966::1::::<><>::
 testLyvokSlide.png::CompressedTexture2D::4080646605635021549::1732386740::1733069966::1::::<><>::
 testLyvokStopped.png::CompressedTexture2D::2964249806028129991::1732386740::1733069967::1::::<><>::
-::res://TestAssets/testVisuals/testCharacterSprites/testSelena/::1733069869
+::res://TestAssets/testVisuals/testCharacterSprites/testSelena/::1733069967
 testSelenaAbility.png::CompressedTexture2D::1617999292656439790::1732386740::1733069967::1::::<><>::
 testSelenaBase.png::CompressedTexture2D::6131969250341940922::1732386740::1733069967::1::::<><>::
 testSelenaBrake.png::CompressedTexture2D::8773899778279223577::1732386740::1733069967::1::::<><>::
@@ -262,7 +262,7 @@ testSelenaRun.png::CompressedTexture2D::3418044616046260617::1732386740::1733069
 testSelenaSlide.png::CompressedTexture2D::4920415652854026450::1732386740::1733069967::1::::<><>::
 testSelenaStartSheet.png::CompressedTexture2D::3380586163211292089::1733069869::1733069967::1::::<><>::
 testSelenaStopped.png::CompressedTexture2D::73635612829520165::1732386740::1733069967::1::::<><>::
-::res://TestAssets/testVisuals/testStartScreenVisuals/::1732464560
+::res://TestAssets/testVisuals/testStartScreenVisuals/::1733069967
 test_AdienPortrait.png::CompressedTexture2D::992672506776443589::1732386740::1733069967::1::::<><>::
 test_DJPortrait.png::CompressedTexture2D::8455216935341067113::1732386740::1733069967::1::::<><>::
 test_IsaacPortrait.png::CompressedTexture2D::1682033051669529006::1732386740::1733069967::1::::<><>::

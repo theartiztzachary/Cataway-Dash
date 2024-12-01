@@ -171,7 +171,7 @@ func _process(delta):
 	if CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.PLAY:
 		move_blocks(delta)
 		
-		if block_count < 3:
+		if block_count < 4:
 			add_block()
 			
 		if !ability_ready:
@@ -193,6 +193,7 @@ func _process(delta):
 func _input(_event):
 	if Input.is_action_just_pressed('jump'):
 		if CharacterHandler.on_ground:
+			print('The gravity acceleration as we hit jump is: ' + str(gravity_acceleration))
 			gravity_applied += jump_power
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
@@ -239,7 +240,7 @@ func _exit_tree():
 		instance.queue_free()
 	
 func block_initialization(): #loads 3 blocks on startup
-	while block_count < 3:
+	while block_count < 4:
 		var block_to_load #will hold the variable that determines which block to load
 		if block_count == 0:
 			pass #this will bypass the RNG call so that the very first block in a run is always the same
@@ -255,34 +256,42 @@ func block_initialization(): #loads 3 blocks on startup
 		
 		if block_count == 0:
 			block_instance.position.x = 0
+			block_instance.position.y = 480 # bottom left of the screen
 		else:
 			block_instance.position.x = block_array[-1].position.x + 1000
-		block_instance.position.y = 480
+			block_instance.position.y = block_array[-1].position.y
+
 		
 		block_array.append(block_instance)
 		block_count += 1
 		
 func move_blocks(delta):
-	var movement_tick = 0
 	for block in block_array:
+		
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			block.position.x -= (current_speed * delta * calculated_decision_slow)
-			absolute_y += (gravity_applied * delta * calculated_decision_slow)
 			
-			if above_midpoint:
-				block.psotion.y = (gravity_applied * delta * calculated_decision_slow)
-			elif !above_midpoint && movement_tick == 0:
-				play_character.position.y -= (gravity_applied * delta)
-				movement_tick += 1
+			if block == block_array[0]:
+				if above_midpoint:
+					block.position.y = (gravity_applied * delta * calculated_decision_slow)
+					absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1
+				elif !above_midpoint:
+					play_character.position.y -= (gravity_applied * delta)
+					absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1
+			else:
+				block.position.y = block_array[0].position.y
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
-			absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
 			
-			if above_midpoint:
-				block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
-			elif !above_midpoint && movement_tick == 0:
-				play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
-				movement_tick += 1
+			if block == block_array[0]:
+				if above_midpoint:
+					block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
+					absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+				elif !above_midpoint:
+					play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
+					absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+			else:
+				block.position.y = block_array[0].position.y
 			
 		if CharacterHandler.on_ground:
 			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
@@ -320,12 +329,8 @@ func move_blocks(delta):
 			
 		#because positive Y is down and negative Y is up this looks inverted
 		if (!above_midpoint) && (absolute_y <= midpoint):
-			print("We went above the midpoint.")
-			print("Midpoint: " + str(midpoint))
-			print("Absolute Y: " + str(absolute_y))
 			above_midpoint = true
 		elif (above_midpoint) && (absolute_y > midpoint):
-			print("We went below the midpoint.")
 			above_midpoint = false
 	
 func add_block():
@@ -340,7 +345,7 @@ func add_block():
 	instantiated_children.append(block_instance)
 		
 	block_instance.position.x = block_array[-1].position.x + 1000
-	block_instance.position.y = 480
+	block_instance.position.y = block_array[-1].position.y
 	
 	block_array.append(block_instance)
 	block_count += 1

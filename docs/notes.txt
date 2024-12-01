@@ -1,4 +1,6 @@
 ## BUGFIX LIST
+> jump power seems to be "sapped" as you play?
+> sometimes the midpoint system gets WAAAAY out of sync - may have been fixed by the brute force method?
 
 ## IMPLEMENTATION LIST
 > adien has a two-part animation for his double jump (first half should not be looped, second half should be)

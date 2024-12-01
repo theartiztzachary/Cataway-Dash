@@ -1,3 +1,5 @@
 res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
 res://ScriptAssets/PlayScreenScripts/PlayControler.gd
 res://ScriptAssets/GlobalScripts/CharacterHandler.gd
+res://docs/ReadMenNotes.txt
+res://docs/notes.txt
