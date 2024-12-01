@@ -193,7 +193,6 @@ func _process(delta):
 func _input(_event):
 	if Input.is_action_just_pressed('jump'):
 		if CharacterHandler.on_ground:
-			print('The gravity acceleration as we hit jump is: ' + str(gravity_acceleration))
 			gravity_applied += jump_power
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
@@ -231,6 +230,7 @@ func _input(_event):
 				reality_warp_activated()
 				
 	if Input.is_action_just_released('ability'):
+		# Calculated Decision is the only ability we can really "deactivate"
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			CharacterHandler.in_ability = false
 			ability_ready = true
@@ -361,7 +361,7 @@ func ending_game(_delta):
 	#fade out blocks/background
 	#add in end control
 	#calculate score
-	#score = (game_distance / game_time) * star_coins\
+	#score = (game_distance / game_time) * star_coins
 	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.END
 	
 func final_end():
