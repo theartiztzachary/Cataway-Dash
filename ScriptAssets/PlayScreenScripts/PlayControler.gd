@@ -283,14 +283,6 @@ func move_blocks(delta):
 			elif !above_midpoint && movement_tick == 0:
 				play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
 				movement_tick += 1
-		
-		# this looks flipped bc origin is top left
-		if above_midpoint && (absolute_y > midpoint):
-			above_midpoint = false
-		elif !above_midpoint && (absolute_y < midpoint):
-			print('The midpoint is: ' + str(midpoint))
-			print('The absolute Y is: ' + str(absolute_y))
-			above_midpoint = true
 			
 		if CharacterHandler.on_ground:
 			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
@@ -325,6 +317,16 @@ func move_blocks(delta):
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
+			
+		#because positive Y is down and negative Y is up this looks inverted
+		if (!above_midpoint) && (absolute_y <= midpoint):
+			print("We went above the midpoint.")
+			print("Midpoint: " + str(midpoint))
+			print("Absolute Y: " + str(absolute_y))
+			above_midpoint = true
+		elif (above_midpoint) && (absolute_y > midpoint):
+			print("We went below the midpoint.")
+			above_midpoint = false
 	
 func add_block():
 	var block_to_load #will hold the variable that determines which block to load
