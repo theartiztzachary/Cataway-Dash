@@ -280,6 +280,37 @@ func move_blocks(delta):
 					absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1
 			else:
 				block.position.y = block_array[0].position.y
+				
+			if CharacterHandler.on_ground:
+				if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
+					CharacterHandler.is_stopped = false
+					if current_speed < max_speed:
+						current_speed += (acceleration * delta)
+					elif current_speed >= max_speed:
+						current_speed = max_speed
+				elif CharacterHandler.is_sliding:
+					if current_speed > 0:
+						current_speed -= (slide_brake * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+				elif CharacterHandler.is_braking:
+					if current_speed > 0:
+						current_speed -= (brake_power * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+			elif !(CharacterHandler.on_ground):
+				if block == block_array[0]:
+					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
+						gravity_applied += (gravity_acceleration * delta)
+					elif gravity_applied <= gravity_max:
+						gravity_applied = gravity_max
+				
+					if gravity_applied < 0:
+						CharacterHandler.is_jumping = false
+						CharacterHandler.is_falling = true
+						
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
 			
@@ -293,36 +324,37 @@ func move_blocks(delta):
 			else:
 				block.position.y = block_array[0].position.y
 			
-		if CharacterHandler.on_ground:
-			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
-				CharacterHandler.is_stopped = false
-				if current_speed < max_speed:
-					current_speed += (acceleration * delta)
-				elif current_speed >= max_speed:
-					current_speed = max_speed
-			elif CharacterHandler.is_sliding:
-				if current_speed > 0:
-					current_speed -= (slide_brake * delta)
-				elif current_speed <= 0:
-					current_speed = 0
-					CharacterHandler.is_stopped = true
-			elif CharacterHandler.is_braking:
-				if current_speed > 0:
-					current_speed -= (brake_power * delta)
-				elif current_speed <= 0:
-					current_speed = 0
-					CharacterHandler.is_stopped = true
-		elif !(CharacterHandler.on_ground):
-			if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-				gravity_applied += (gravity_acceleration * delta)
-			elif gravity_applied <= gravity_max:
-				gravity_applied = gravity_max
+			if CharacterHandler.on_ground:
+				if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
+					CharacterHandler.is_stopped = false
+					if current_speed < max_speed:
+						current_speed += (acceleration * delta)
+					elif current_speed >= max_speed:
+						current_speed = max_speed
+				elif CharacterHandler.is_sliding:
+					if current_speed > 0:
+						current_speed -= (slide_brake * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+				elif CharacterHandler.is_braking:
+					if current_speed > 0:
+						current_speed -= (brake_power * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+			elif !(CharacterHandler.on_ground):
+				if block == block_array[0]:
+					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
+						gravity_applied += (gravity_acceleration * delta)
+					elif gravity_applied <= gravity_max:
+						gravity_applied = gravity_max
 				
-			if gravity_applied < 0:
-				CharacterHandler.is_jumping = false
-				CharacterHandler.is_falling = true
-				if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
-					CharacterHandler.in_ability = false
+					if gravity_applied < 0:
+						CharacterHandler.is_jumping = false
+						CharacterHandler.is_falling = true
+						if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
+							CharacterHandler.in_ability = false
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
@@ -369,6 +401,7 @@ func final_end():
 	#buttons come in
 		
 func _on_safe():
+	print('Collision recieved! Character position is: ' + str(play_character.position.y))
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0
