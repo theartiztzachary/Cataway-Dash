@@ -67,6 +67,11 @@ var block_initialization_distance_x = 0
 
 var instantiated_children = []
 
+## Collision Check Variables
+var next_frame_y = 0
+var snap_next_frame = false
+var char_y_position_next_frame = 0
+
 ## Character Placement
 var play_character: CharacterBody2D
 const character_placement_x = 100
@@ -402,13 +407,7 @@ func final_end():
 		
 # character, collision shape
 func _on_safe(character_position_y, collision_shape_position_y):
-	print('Collision recieved! Character Y position directly from character node is: ' + str(play_character.global_position.y))
-	print('Character Y position from collision signal is: ' + str(character_position_y))
-	print('Collision body Y position from collision signal is: ' + str(collision_shape_position_y))
-	print('Applying snapping function...')
 	play_character.global_position.y = collision_shape_position_y
-	print('Snapping function complete.')
-	print('Character Y position directly from character node is: ' + str(play_character.global_position.y))
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0
