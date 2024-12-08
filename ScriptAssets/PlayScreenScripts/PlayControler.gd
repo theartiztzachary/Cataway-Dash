@@ -70,8 +70,7 @@ var instantiated_children = []
 ## Collision Check Variables
 var collision_shape: CollisionShape2D
 var next_frame_y = 0
-var snap_next_frame = false
-var char_y_position_next_frame = 0
+var next_frame_delta = 0
 
 ## Character Placement
 var play_character: CharacterBody2D
@@ -156,6 +155,7 @@ func _ready():
 	midpoint = get_node('/root/PlayScreenScn/PlayControl').size.y / 2
 	
 	## Starting Movement States
+	CharacterHandler.snap_next_frame = false
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_sliding = false
 	CharacterHandler.is_braking = false
@@ -334,11 +334,23 @@ func move_blocks(delta):
 			
 			if block == block_array[0]:
 				if above_midpoint:
-					block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
-					absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+					if CharacterHandler.snap_next_frame:
+						block.positoin.y -= next_frame_delta
+						absolute_y -= next_frame_delta
+						CharacterHandler.snap_next_frame = false
+					else:
+						block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
+						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
 				elif !above_midpoint:
-					play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
-					absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+					if CharacterHandler.snap_next_frame:
+						play_character.position.y = next_frame_y
+						absolute_y = next_frame_y
+						print('Snap! Character Y posiiton: ' + str(play_character.position.y))
+						print('Absolute Y: ' + str(play_character.position.y))
+						CharacterHandler.snap_next_frame = false
+					else:
+						play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
+						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
 			else:
 				block.position.y = block_array[0].position.y
 			
@@ -424,8 +436,11 @@ func final_end():
 		
 # character, collision shape
 func _on_safe(collision_shape_position_y):
-	play_character.global_position.y = collision_shape_position_y
-	print(str(play_character.global_position.y))
+	print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
+	CharacterHandler.snap_next_frame = true
+	next_frame_y = collision_shape_position_y
+	next_frame_delta = abs(play_character.global_position.y - collision_shape_position_y)
+	#play_character.global_position.y = collision_shape_position_y
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0

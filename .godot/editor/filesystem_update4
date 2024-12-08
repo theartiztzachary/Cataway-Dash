@@ -6,3 +6,6 @@ res://SceneAssets/CharacterScenes/AdienScn.tscn
 res://ScriptAssets/BlockScripts/FloorScript.gd
 res://SceneAssets/CharacterScenes/SelenaScn.tscn
 res://docs/notes.txt
+res://ScriptAssets/GlobalScripts/CharacterHandler.gd
+res://TestAssets/testScenes/TestFloor.tscn
+res://TestAssets/testScenes/TestPlatform.tscn

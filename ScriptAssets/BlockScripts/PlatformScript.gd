@@ -8,7 +8,7 @@ func _on_body_shape_entered(_body_rid, _body, _body_shape_index, local_shape_ind
 	elif collision_body == 'unsafe':
 		CharacterHandler.unsafe.emit()
 
-
 func _on_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
 	CharacterHandler.on_ground = false
 	CharacterHandler.is_falling = true
+	#CharacterHandler.snap_next_frame = false
