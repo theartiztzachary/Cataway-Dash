@@ -4,3 +4,4 @@ res://ScriptAssets/BlockScripts/FloorScript.gd
 res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
 res://ScriptAssets/PlayScreenScripts/PlayControler.gd
 res://ScriptAssets/BlockScripts/PlatformScript.gd
+res://SceneAssets/CharacterScenes/AdienScn.tscn

@@ -273,6 +273,16 @@ func block_initialization(): #loads 3 blocks on startup
 func move_blocks(delta):
 	for block in block_array:
 		
+		#collision shape does not need to be offset horizontally bc we do not care about percision if something
+		#is hit dead on (this may change when tackling literal corner cases)
+		#if we are in the air
+			#offset the character's collision shape by speed
+			#this offset will always be down since we do not care about precise placement if something is hit
+			#from below
+		#if we are not in the air
+			#no need for offset since we can't vertically re-collide with something we are on
+		#this setup will probably ultra break the litteral corner cases but stepping stones
+		
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			block.position.x -= (current_speed * delta * calculated_decision_slow)
 			
@@ -315,6 +325,10 @@ func move_blocks(delta):
 					if gravity_applied < 0:
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
+					
+					play_character.CollisionShape2D.position.y = play_character.position.y + abs(gravity_applied)
+					print('Character Y position: ' + str(play_character.position.y))
+					print('Character collision shape Y position: ' + str(play_character.CollisionShape.position.y))
 						
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
@@ -407,6 +421,7 @@ func final_end():
 		
 # character, collision shape
 func _on_safe(character_position_y, collision_shape_position_y):
+	print('Collision detected!')
 	play_character.global_position.y = collision_shape_position_y
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
