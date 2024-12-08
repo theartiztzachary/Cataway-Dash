@@ -33,6 +33,10 @@ var coyote_time_timer = 0
 var absolute_y = 475
 var midpoint
 var above_midpoint = false
+var passing_midpoint = false
+var pass_midpoint_delta = 0
+var pass_midpoint_character_apply = 0
+var pass_midpoint_block_apply = 0
 
 ## Individual Character Ability Variables
 var ability_ready = true
@@ -274,17 +278,6 @@ func block_initialization(): #loads 3 blocks on startup
 		
 func move_blocks(delta):
 	for block in block_array:
-		
-		#collision shape does not need to be offset horizontally bc we do not care about percision if something
-		#is hit dead on (this may change when tackling literal corner cases)
-		#if we are in the air
-			#offset the character's collision shape by speed
-			#this offset will always be down since we do not care about precise placement if something is hit
-			#from below
-		#if we are not in the air
-			#no need for offset since we can't vertically re-collide with something we are on
-		#this setup will probably ultra break the litteral corner cases but stepping stones
-		
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			block.position.x -= (current_speed * delta * calculated_decision_slow)
 			
@@ -327,6 +320,12 @@ func move_blocks(delta):
 					if gravity_applied < 0:
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
+						
+			#because positive Y is down and negative Y is up this looks inverted
+			if (!above_midpoint) && (absolute_y <= midpoint):
+				above_midpoint = true
+			elif (above_midpoint) && (absolute_y > midpoint):
+				above_midpoint = false
 					
 					#ADD NEW COLLISION STUFF HERE (this is the korria block)
 		# end Korria ability movement block				
@@ -341,6 +340,11 @@ func move_blocks(delta):
 						print('Above midpoint snap! Character Y position: ' + str(play_character.position.y))
 						print('Block position: ' + str(block.position.y))
 						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						block.position.y = 480
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - 480)))
+						passing_midpoint = false
+						above_midpoint = false
 					else:
 						block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
 						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
@@ -351,6 +355,11 @@ func move_blocks(delta):
 						#print('Snap! Character Y posiiton: ' + str(play_character.position.y))
 						#print('Absolute Y: ' + str(play_character.position.y))
 						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						play_character.position.y -= pass_midpoint_character_apply
+						block.position.y -=  pass_midpoint_block_apply
+						passing_midpoint = false
+						above_midpoint = true
 					else:
 						play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
 						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
@@ -390,18 +399,25 @@ func move_blocks(delta):
 							CharacterHandler.in_ability = false
 							
 					collision_shape.position.y = play_character.position.y + abs(gravity_applied)
+					
+			if !above_midpoint && !passing_midpoint:
+				if (play_character.position.y - (gravity_applied * delta)) <= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = play_character.position.y - (play_character.position.y - (gravity_applied * delta))
+					pass_midpoint_character_apply = play_character.position.y - midpoint # character is coming up to midpoint
+					pass_midpoint_block_apply = pass_midpoint_delta - pass_midpoint_character_apply # blocks will move down after midpoint
+			elif above_midpoint && !passing_midpoint:
+				if (absolute_y + (gravity_applied * delta * -1)) >= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = absolute_y - (absolute_y - (gravity_applied * delta * -1))
+					pass_midpoint_block_apply = absolute_y - midpoint #blocks are coming up to midpoint
+					pass_midpoint_character_apply = pass_midpoint_delta - pass_midpoint_block_apply # character will move down after midpoint
 		
 		# end regular movement block
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
 			
-		#because positive Y is down and negative Y is up this looks inverted
-		if (!above_midpoint) && (absolute_y <= midpoint):
-			above_midpoint = true
-		elif (above_midpoint) && (absolute_y > midpoint):
-			above_midpoint = false
-	
 func add_block():
 	var block_to_load #will hold the variable that determines which block to load
 	#rng call to set which block will be loaded
@@ -449,11 +465,12 @@ func _on_safe(collision_shape_node):
 	# stuff if we are above midpoint
 	var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
 	if above_midpoint:
-		print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
-		print('Parent block Y position: ' + str(parent_block.position.y))
-		print('Vertical distance between platform and parent block Y positions: ' + str(relative_block_anchor_position))
-	relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
-	next_frame_delta = collision_shape_position_y - play_character.position.y
+		pass
+		#print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
+		#print('Parent block Y position: ' + str(parent_block.position.y))
+		#print('Vertical distance between platform and parent block Y positions: ' + str(relative_block_anchor_position))
+	#relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
+	#next_frame_delta = collision_shape_position_y - play_character.position.y
 	
 	# current: relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
 	# goal 1: relative_block_anchor_position = parent_block.position.y - play_character.position.y
