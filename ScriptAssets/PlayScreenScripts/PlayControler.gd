@@ -336,8 +336,10 @@ func move_blocks(delta):
 			if block == block_array[0]:
 				if above_midpoint:
 					if CharacterHandler.snap_next_frame:
-						block.positoin.y -= next_frame_delta
+						block.position.y = play_character.position.y - relative_block_anchor_position # this SHOULD snap block to character
 						absolute_y -= next_frame_delta
+						print('Above midpoint snap! Character Y position: ' + str(play_character.position.y))
+						print('Block position: ' + str(block.position.y))
 						CharacterHandler.snap_next_frame = false
 					else:
 						block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
@@ -346,8 +348,8 @@ func move_blocks(delta):
 					if CharacterHandler.snap_next_frame:
 						play_character.position.y = next_frame_y
 						absolute_y = next_frame_y
-						print('Snap! Character Y posiiton: ' + str(play_character.position.y))
-						print('Absolute Y: ' + str(play_character.position.y))
+						#print('Snap! Character Y posiiton: ' + str(play_character.position.y))
+						#print('Absolute Y: ' + str(play_character.position.y))
 						CharacterHandler.snap_next_frame = false
 					else:
 						play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
@@ -439,7 +441,6 @@ func final_end():
 func _on_safe(collision_shape_node):
 	# initial variable collection
 	var collision_shape_position_y = collision_shape_node.global_position.y
-	print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
 	CharacterHandler.snap_next_frame = true
 	
 	# stuff if we are below midpoint
@@ -447,15 +448,16 @@ func _on_safe(collision_shape_node):
 	
 	# stuff if we are above midpoint
 	var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
+	if above_midpoint:
+		print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
+		print('Parent block Y position: ' + str(parent_block.position.y))
+		print('Vertical distance between platform and parent block Y positions: ' + str(relative_block_anchor_position))
 	relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
-	print('Parent block Y position:' + str(parent_block.position.y))
-	print('Vertical distance between platform and parent block Y positions' + str(relative_block_anchor_position))
+	next_frame_delta = collision_shape_position_y - play_character.position.y
 	
 	# current: relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
 	# goal 1: relative_block_anchor_position = parent_block.position.y - play_character.position.y
 	# goal 2: collision_shape_position_y = play_character.position.y (by moving block)
-	
-	next_frame_delta = abs(play_character.global_position.y - collision_shape_position_y)
 	
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false

@@ -1,11 +1,7 @@
 res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
-res://ScriptAssets/BlockScripts/PlatformScript.gd
 res://ScriptAssets/PlayScreenScripts/PlayControler.gd
 res://TestAssets/testScenes/TestBlock.tscn
 res://SceneAssets/CharacterScenes/AdienScn.tscn
-res://ScriptAssets/BlockScripts/FloorScript.gd
 res://SceneAssets/CharacterScenes/SelenaScn.tscn
-res://docs/notes.txt
-res://ScriptAssets/GlobalScripts/CharacterHandler.gd
-res://TestAssets/testScenes/TestFloor.tscn
 res://TestAssets/testScenes/TestPlatform.tscn
+res://TestAssets/testScenes/TestFloor.tscn
