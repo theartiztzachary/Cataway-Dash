@@ -326,7 +326,7 @@ func move_blocks(delta):
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
 					
-					play_character.CollisionShape2D.position.y = play_character.position.y + abs(gravity_applied)
+					#play_character.CollisionShape2D.position.y = play_character.position.y + abs(gravity_applied)
 					print('Character Y position: ' + str(play_character.position.y))
 					print('Character collision shape Y position: ' + str(play_character.CollisionShape.position.y))
 						
@@ -420,7 +420,7 @@ func final_end():
 	#buttons come in
 		
 # character, collision shape
-func _on_safe(character_position_y, collision_shape_position_y):
+func _on_safe(collision_shape_position_y):
 	print('Collision detected!')
 	play_character.global_position.y = collision_shape_position_y
 	CharacterHandler.on_ground = true
