@@ -4,3 +4,5 @@ res://ScriptAssets/PlayScreenScripts/PlayControler.gd
 res://TestAssets/testScenes/TestBlock.tscn
 res://SceneAssets/CharacterScenes/AdienScn.tscn
 res://ScriptAssets/BlockScripts/FloorScript.gd
+res://SceneAssets/CharacterScenes/SelenaScn.tscn
+res://docs/notes.txt

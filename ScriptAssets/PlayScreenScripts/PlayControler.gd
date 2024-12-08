@@ -68,6 +68,7 @@ var block_initialization_distance_x = 0
 var instantiated_children = []
 
 ## Collision Check Variables
+var collision_shape: CollisionShape2D
 var next_frame_y = 0
 var snap_next_frame = false
 var char_y_position_next_frame = 0
@@ -84,6 +85,7 @@ func _ready():
 			var selena_scene = ResourceLoader.load('res://SceneAssets/CharacterScenes/SelenaScn.tscn')
 			play_character = selena_scene.instantiate()
 			instantiated_children.append(play_character)
+			collision_shape = play_character.find_child('CollisionShape2D')
 			
 			acceleration = TestCharacterStats.selena_acceleration
 			max_speed = TestCharacterStats.selena_max_speed
@@ -148,11 +150,8 @@ func _ready():
 	play_character.z_index = 1
 	get_tree().get_root().add_child(play_character)
 	
-	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
-	
-	##Temp
-	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1
-	gravity_max = TestCharacterStats.gravity_max * -1
+	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
+	gravity_max = TestCharacterStats.gravity_max * -1 #temp
 	
 	midpoint = get_node('/root/PlayScreenScn/PlayControl').size.y / 2
 	
@@ -171,6 +170,8 @@ func _ready():
 	CharacterHandler.connect('star_coin', _on_star_coin)
 	
 	block_initialization()
+	
+	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
 	
 func _process(delta):
 	if CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.PLAY:
@@ -326,10 +327,8 @@ func move_blocks(delta):
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
 					
-					#play_character.CollisionShape2D.position.y = play_character.position.y + abs(gravity_applied)
-					print('Character Y position: ' + str(play_character.position.y))
-					print('Character collision shape Y position: ' + str(play_character.CollisionShape.position.y))
-						
+					#ADD NEW COLLISION STUFF HERE (this is the korria block)
+		# end Korria ability movement block				
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
 			
@@ -374,6 +373,10 @@ func move_blocks(delta):
 						CharacterHandler.is_falling = true
 						if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
 							CharacterHandler.in_ability = false
+							
+					collision_shape.position.y = play_character.position.y + abs(gravity_applied)
+		
+		# end regular movement block
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
@@ -421,8 +424,8 @@ func final_end():
 		
 # character, collision shape
 func _on_safe(collision_shape_position_y):
-	print('Collision detected!')
 	play_character.global_position.y = collision_shape_position_y
+	print(str(play_character.global_position.y))
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0

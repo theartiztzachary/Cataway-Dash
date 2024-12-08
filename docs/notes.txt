@@ -2,6 +2,8 @@
 > jump power seems to be "sapped" as you play?
 > sometimes the midpoint system gets WAAAAY out of sync - may have been fixed by the brute force method?
 
+> rememer to put the collision_shape finder in all of the character initilizations (currently only on Selena for testing)
+
 ## IMPLEMENTATION LIST
 > adien has a two-part animation for his double jump (first half should not be looped, second half should be)
 > lyvok's animations need to include the "disconnect" between teleport points
