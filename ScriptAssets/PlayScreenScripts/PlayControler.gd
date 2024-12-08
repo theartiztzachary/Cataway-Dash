@@ -71,6 +71,7 @@ var instantiated_children = []
 var collision_shape: CollisionShape2D
 var next_frame_y = 0
 var next_frame_delta = 0
+var relative_block_anchor_position = 0
 
 ## Character Placement
 var play_character: CharacterBody2D
@@ -435,12 +436,27 @@ func final_end():
 	#buttons come in
 		
 # character, collision shape
-func _on_safe(collision_shape_position_y):
+func _on_safe(collision_shape_node):
+	# initial variable collection
+	var collision_shape_position_y = collision_shape_node.global_position.y
 	print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
 	CharacterHandler.snap_next_frame = true
+	
+	# stuff if we are below midpoint
 	next_frame_y = collision_shape_position_y
+	
+	# stuff if we are above midpoint
+	var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
+	relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
+	print('Parent block Y position:' + str(parent_block.position.y))
+	print('Vertical distance between platform and parent block Y positions' + str(relative_block_anchor_position))
+	
+	# current: relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
+	# goal 1: relative_block_anchor_position = parent_block.position.y - play_character.position.y
+	# goal 2: collision_shape_position_y = play_character.position.y (by moving block)
+	
 	next_frame_delta = abs(play_character.global_position.y - collision_shape_position_y)
-	#play_character.global_position.y = collision_shape_position_y
+	
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0

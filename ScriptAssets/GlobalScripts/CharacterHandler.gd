@@ -82,7 +82,7 @@ var in_ability
 var is_jumping
 
 ## Collision Signals n Stuff
-signal safe(collision_shape_position_y)
+signal safe(collision_shape_node)
 signal unsafe
 signal star_coin
 
