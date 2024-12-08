@@ -81,6 +81,7 @@ var is_stopped
 var in_ability
 var is_jumping
 
-signal safe
+## Collision Signals
+signal safe(collision_shape_position_y)
 signal unsafe
 signal star_coin

@@ -400,8 +400,15 @@ func final_end():
 	SceneHandler.goto_scene('res://SceneAssets/CharacterSelectScenes/CharacterSelectScn.tscn')
 	#buttons come in
 		
-func _on_safe():
-	print('Collision recieved! Character position is: ' + str(play_character.position.y))
+# character, collision shape
+func _on_safe(character_position_y, collision_shape_position_y):
+	print('Collision recieved! Character Y position directly from character node is: ' + str(play_character.global_position.y))
+	print('Character Y position from collision signal is: ' + str(character_position_y))
+	print('Collision body Y position from collision signal is: ' + str(collision_shape_position_y))
+	print('Applying snapping function...')
+	play_character.global_position.y = collision_shape_position_y
+	print('Snapping function complete.')
+	print('Character Y position directly from character node is: ' + str(play_character.global_position.y))
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false
 	gravity_applied = 0
@@ -413,7 +420,7 @@ func _on_unsafe():
 		burnout_activated()
 	else:
 		gravity_applied = 0
-		CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.OVER
+		#CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.OVER
 	
 func _on_star_coin():
 	star_coins_collected += 1
