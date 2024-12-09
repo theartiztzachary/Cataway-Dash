@@ -89,7 +89,6 @@ func _ready():
 			var selena_scene = ResourceLoader.load('res://SceneAssets/CharacterScenes/SelenaScn.tscn')
 			play_character = selena_scene.instantiate()
 			instantiated_children.append(play_character)
-			collision_shape = play_character.find_child('CollisionShape2D')
 			
 			acceleration = TestCharacterStats.selena_acceleration
 			max_speed = TestCharacterStats.selena_max_speed
@@ -153,6 +152,7 @@ func _ready():
 	play_character.position.y = character_placement_y
 	play_character.z_index = 1
 	get_tree().get_root().add_child(play_character)
+	collision_shape = play_character.find_child('CollisionShape2D')
 	
 	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
 	gravity_max = TestCharacterStats.gravity_max * -1 #temp
@@ -335,10 +335,9 @@ func move_blocks(delta):
 			if block == block_array[0]:
 				if above_midpoint:
 					if CharacterHandler.snap_next_frame:
-						block.position.y = play_character.position.y - relative_block_anchor_position # this SHOULD snap block to character
+						block.position.y += next_frame_delta 
 						absolute_y -= next_frame_delta
-						print('Above midpoint snap! Character Y position: ' + str(play_character.position.y))
-						print('Block position: ' + str(block.position.y))
+						print('Snap! Block position: ' + str(block.position.y))
 						CharacterHandler.snap_next_frame = false
 					elif passing_midpoint:
 						block.position.y = 480
@@ -352,8 +351,6 @@ func move_blocks(delta):
 					if CharacterHandler.snap_next_frame:
 						play_character.position.y = next_frame_y
 						absolute_y = next_frame_y
-						#print('Snap! Character Y posiiton: ' + str(play_character.position.y))
-						#print('Absolute Y: ' + str(play_character.position.y))
 						CharacterHandler.snap_next_frame = false
 					elif passing_midpoint:
 						play_character.position.y -= pass_midpoint_character_apply
@@ -460,21 +457,14 @@ func _on_safe(collision_shape_node):
 	CharacterHandler.snap_next_frame = true
 	
 	# stuff if we are below midpoint
-	next_frame_y = collision_shape_position_y
-	
+	if !above_midpoint:
+		next_frame_y = collision_shape_position_y
 	# stuff if we are above midpoint
-	var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
-	if above_midpoint:
-		pass
-		#print('_on_safe triggered. Platform/floor collision shape Y: ' + str(collision_shape_position_y))
-		#print('Parent block Y position: ' + str(parent_block.position.y))
-		#print('Vertical distance between platform and parent block Y positions: ' + str(relative_block_anchor_position))
-	#relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
-	#next_frame_delta = collision_shape_position_y - play_character.position.y
-	
-	# current: relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
-	# goal 1: relative_block_anchor_position = parent_block.position.y - play_character.position.y
-	# goal 2: collision_shape_position_y = play_character.position.y (by moving block)
+	elif above_midpoint:
+		var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
+		relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
+		next_frame_delta = play_character.position.y - collision_shape_position_y
+		next_frame_y = parent_block.position.y - next_frame_delta
 	
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_falling = false

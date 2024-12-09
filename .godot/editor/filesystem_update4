@@ -5,3 +5,6 @@ res://SceneAssets/CharacterScenes/AdienScn.tscn
 res://SceneAssets/CharacterScenes/SelenaScn.tscn
 res://TestAssets/testScenes/TestPlatform.tscn
 res://TestAssets/testScenes/TestFloor.tscn
+res://ScriptAssets/BlockScripts/FloorScript.gd
+res://ScriptAssets/BlockScripts/PlatformScript.gd
+res://docs/notes.txt
