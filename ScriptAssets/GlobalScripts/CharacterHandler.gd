@@ -81,7 +81,9 @@ var is_stopped
 var in_ability
 var is_jumping
 
-## Collision Signals
-signal safe(collision_shape_position_y)
+## Collision Signals n Stuff
+signal safe(collision_shape_node)
 signal unsafe
 signal star_coin
+
+var snap_next_frame

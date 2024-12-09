@@ -18,3 +18,9 @@ position = Vector2(484, -75)
 [node name="TestPlatform_2" parent="." instance=ExtResource("3_gn8k7")]
 z_index = 1
 position = Vector2(664, -143)
+
+[node name="TestPlatform" parent="." instance=ExtResource("3_gn8k7")]
+position = Vector2(147, -238)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("3_gn8k7")]
+position = Vector2(639, -320)
