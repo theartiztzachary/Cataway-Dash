@@ -1,6 +1,7 @@
 ## BUGFIX LIST
 
 ## IMPLEMENTATION LIST
+> time held for jump power?
 > adien has a two-part animation for his double jump (first half should not be looped, second half should be)
 > lyvok's animations need to include the "disconnect" between teleport points
 > full movement system implementation

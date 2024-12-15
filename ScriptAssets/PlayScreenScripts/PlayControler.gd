@@ -18,6 +18,7 @@ var jump_power
 var gravity_acceleration
 var gravity_applied = 0
 var gravity_max
+var jump_power_timer_multiplier = 0
 
 var slide_brake 
 var slide_boost 

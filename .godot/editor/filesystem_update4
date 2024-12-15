@@ -1,3 +1,4 @@
 res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
 res://docs/notes.txt
 res://ScriptAssets/PlayScreenScripts/PlayControler.gd
+res://TestAssets/testScenes/TestBlock.tscn

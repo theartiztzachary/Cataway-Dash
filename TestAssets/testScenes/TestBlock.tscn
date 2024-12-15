@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c526qbkxo4ypp"]
+[gd_scene load_steps=3 format=3 uid="uid://c526qbkxo4ypp"]
 
 [ext_resource type="Texture2D" uid="uid://bsyph646ss6q2" path="res://TestAssets/testVisuals/testBlockVisuals/alphaTestBlockBackground.png" id="1_al1ay"]
 [ext_resource type="PackedScene" uid="uid://cl50jjiygtyfc" path="res://TestAssets/testScenes/TestFloor.tscn" id="2_13gvf"]
-[ext_resource type="PackedScene" uid="uid://35htjotqvrly" path="res://TestAssets/testScenes/TestPlatform.tscn" id="3_gn8k7"]
 
 [node name="TestBlock" type="Node2D"]
 
@@ -11,16 +10,3 @@ position = Vector2(500, -500)
 texture = ExtResource("1_al1ay")
 
 [node name="TestFloor" parent="." instance=ExtResource("2_13gvf")]
-
-[node name="TestPlatform_" parent="." instance=ExtResource("3_gn8k7")]
-position = Vector2(484, -75)
-
-[node name="TestPlatform_2" parent="." instance=ExtResource("3_gn8k7")]
-z_index = 1
-position = Vector2(664, -143)
-
-[node name="TestPlatform" parent="." instance=ExtResource("3_gn8k7")]
-position = Vector2(147, -238)
-
-[node name="TestPlatform2" parent="." instance=ExtResource("3_gn8k7")]
-position = Vector2(639, -320)
