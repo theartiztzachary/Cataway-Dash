@@ -53,7 +53,6 @@ var star_dash_speed_addition = 5
 var star_dash_current_speed # will start at DJ's base max speed, and then added to
 
 # Korria - Calculated Decision
-var calculated_decision_active = false
 var calculated_decision_slow = .20 # invese decimal of the slow (ie 80% slow would be .20 variable)
 
 # Adien - Wind Step
@@ -279,18 +278,39 @@ func block_initialization(): #loads 3 blocks on startup
 func move_blocks(delta):
 	for block in block_array:
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
-			block.position.x -= (current_speed * delta * calculated_decision_slow)
+			block.position.x -= (current_speed * delta * calculated_decision_slow) # subtracting becuase we are moving blocks left to right
 			
 			if block == block_array[0]:
 				if above_midpoint:
-					block.position.y = (gravity_applied * delta * calculated_decision_slow)
-					absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1
+					if CharacterHandler.snap_next_frame:
+						block.position.y += next_frame_delta 
+						absolute_y -= next_frame_delta
+						print('Snap! Block position: ' + str(block.position.y))
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						block.position.y = 480
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - 480)))
+						passing_midpoint = false
+						above_midpoint = false
+					else:
+						block.position.y += (gravity_applied * delta * calculated_decision_slow) # adding becuase the blocks move down
+						absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1 # keeps track of how "high" off the floor the character is
 				elif !above_midpoint:
-					play_character.position.y -= (gravity_applied * delta)
-					absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1
+					if CharacterHandler.snap_next_frame:
+						play_character.position.y = next_frame_y
+						absolute_y = next_frame_y
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						play_character.position.y -= pass_midpoint_character_apply
+						block.position.y -=  pass_midpoint_block_apply
+						passing_midpoint = false
+						above_midpoint = true
+					else:
+						play_character.position.y -= (gravity_applied * delta * calculated_decision_slow) # subtracting because character moves up
+						absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1 # keeps track of how "high" off the floor the character is
 			else:
 				block.position.y = block_array[0].position.y
-				
+			
 			if CharacterHandler.on_ground:
 				if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
 					CharacterHandler.is_stopped = false
@@ -313,21 +333,31 @@ func move_blocks(delta):
 			elif !(CharacterHandler.on_ground):
 				if block == block_array[0]:
 					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-						gravity_applied += (gravity_acceleration * delta)
+						gravity_applied += (gravity_acceleration * delta * calculated_decision_slow)
 					elif gravity_applied <= gravity_max:
 						gravity_applied = gravity_max
 				
 					if gravity_applied < 0:
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
-						
-			#because positive Y is down and negative Y is up this looks inverted
-			if (!above_midpoint) && (absolute_y <= midpoint):
-				above_midpoint = true
-			elif (above_midpoint) && (absolute_y > midpoint):
-				above_midpoint = false
+						if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
+							CharacterHandler.in_ability = false
+							
+					collision_shape.position.y = play_character.position.y + (abs(gravity_applied) * calculated_decision_slow)
 					
-					#ADD NEW COLLISION STUFF HERE (this is the korria block)
+			if !above_midpoint && !passing_midpoint:
+				if (play_character.position.y - (gravity_applied * delta * calculated_decision_slow)) <= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = play_character.position.y - (play_character.position.y - (gravity_applied * delta * calculated_decision_slow))
+					pass_midpoint_character_apply = play_character.position.y - midpoint # character is coming up to midpoint
+					pass_midpoint_block_apply = pass_midpoint_delta - pass_midpoint_character_apply # blocks will move down after midpoint
+			elif above_midpoint && !passing_midpoint:
+				if (absolute_y + (gravity_applied * delta * -1 * calculated_decision_slow)) >= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = absolute_y - (absolute_y - (gravity_applied * delta * -1 * calculated_decision_slow))
+					pass_midpoint_block_apply = absolute_y - midpoint #blocks are coming up to midpoint
+					pass_midpoint_character_apply = pass_midpoint_delta - pass_midpoint_block_apply # character will move down after midpoint
+		
 		# end Korria ability movement block				
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
