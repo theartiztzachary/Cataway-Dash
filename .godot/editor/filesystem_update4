@@ -1,4 +1,7 @@
+res://SceneAssets/CharacterSelectScenes/CharacterSelectScn.tscn
 res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
-res://docs/notes.txt
-res://ScriptAssets/PlayScreenScripts/PlayControler.gd
 res://TestAssets/testScenes/TestBlock.tscn
+res://SceneAssets/StartScreenScenes/StartScreenScn.tscn
+res://ScriptAssets/StartScreenScripts/StartScreenControl.gd
+res://docs/notes.txt
+res://SceneAssets/OptionsSceens/OptionsScn.tscn

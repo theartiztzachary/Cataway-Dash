@@ -17,7 +17,8 @@ script = ExtResource("1_krbrf")
 layout_mode = 0
 offset_right = 63.0
 offset_bottom = 27.0
-text = "Options"
+text = "Options
+Note - resolution options may bug out due to the recent upsize change, and it has not been throughouly tested yet. Currently my focus as been getting the game mechanics finalized before coming and doing a second pass for the UI. Thanks :3"
 
 [node name="StartButton" type="Button" parent="Control"]
 layout_mode = 0

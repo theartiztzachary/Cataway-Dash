@@ -1,13 +1,13 @@
 extends Control
 
 var rng_gen = RandomNumberGenerator.new()
-var character_portrait: Sprite2D
+var character_portrait: TextureRect
 
 func _ready() -> void:
 	var rng_call = randi_range(1, 6)
 	# 1 = Selena, 2 = Isaac, 3 = DJ, 4 = Korria, 5 = Adien, 6 = Lyvok
 	
-	character_portrait = get_node('/root/StartScreenScn/Control/tempPortraits')
+	character_portrait = get_node('/root/StartScreenScn/Control/AspectRatioContainer/tempPortraits')
 	
 	match rng_call:
 		1:
