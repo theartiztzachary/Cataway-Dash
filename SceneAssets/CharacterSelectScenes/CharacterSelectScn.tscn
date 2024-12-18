@@ -19,75 +19,101 @@
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityAccelField.gd" id="17_x1yau"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/PlatHeightField.gd" id="18_s7gur"]
 
-[node name="CharacterSelectScn" type="Node2D"]
+[node name="CharacterSelectScn" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_oeilx")
 
-[node name="Title" type="Label" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Character Selection"
 
-[node name="SelenaButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 26.0
-offset_right = 62.0
-offset_bottom = 57.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="SelenaButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
 text = "Selena"
 script = ExtResource("1_oe67e")
 
-[node name="IsaacButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 59.0
-offset_right = 51.0
-offset_bottom = 90.0
+[node name="IsaacButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
 text = "Isaac
 "
 script = ExtResource("2_g8pj3")
 
-[node name="DJButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 93.0
-offset_right = 38.0
-offset_bottom = 124.0
+[node name="DJButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
 text = "DJ"
 script = ExtResource("3_t41gu")
 
-[node name="KorriaButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 26.0
-offset_right = 141.0
-offset_bottom = 57.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="KorriaButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
 text = "Korria"
 script = ExtResource("4_l08yl")
 
-[node name="AdienButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 58.0
-offset_right = 139.0
-offset_bottom = 89.0
+[node name="AdienButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
 text = "Adien"
 script = ExtResource("5_h0ml1")
 
-[node name="LyvokButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 92.0
-offset_right = 139.0
-offset_bottom = 123.0
+[node name="LyvokButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
 text = "Lyvok"
 script = ExtResource("6_i5eh4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="GoButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go!"
+script = ExtResource("10_1p4hb")
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("9_e3n3b")
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="How2PlayButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "How To Play"
+script = ExtResource("8_yvfcd")
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("7_rony2")
 
 [node name="CharacterName" type="Label" parent="Control"]
 layout_mode = 0
@@ -109,42 +135,6 @@ offset_left = 191.0
 offset_top = 65.0
 offset_right = 633.0
 offset_bottom = 123.0
-
-[node name="StartButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 542.0
-offset_top = 327.0
-offset_right = 638.0
-offset_bottom = 358.0
-text = "Main Menu"
-script = ExtResource("7_rony2")
-
-[node name="How2PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 359.0
-offset_right = 639.0
-offset_bottom = 390.0
-text = "How To Play"
-script = ExtResource("8_yvfcd")
-
-[node name="ControlsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 564.0
-offset_top = 391.0
-offset_right = 638.0
-offset_bottom = 422.0
-text = "Controls"
-script = ExtResource("9_e3n3b")
-
-[node name="GoButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 425.0
-offset_right = 638.0
-offset_bottom = 477.0
-text = "Go!"
-script = ExtResource("10_1p4hb")
 
 [node name="testControl" type="Control" parent="."]
 layout_mode = 3
@@ -278,16 +268,16 @@ carrot moves to the front of the number you typed.
 Please only type numbers. If unsure, you can double check
 by picking another character or menu and then returning."
 
-[connection signal="pressed" from="Control/SelenaButton" to="Control/SelenaButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/IsaacButton" to="Control/IsaacButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/DJButton" to="Control/DJButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/KorriaButton" to="Control/KorriaButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/AdienButton" to="Control/AdienButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/LyvokButton" to="Control/LyvokButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/How2PlayButton" to="Control/How2PlayButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/GoButton" to="Control/GoButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/DJButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/DJButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/KorriaButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/KorriaButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/AdienButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/AdienButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/LyvokButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer2/LyvokButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/GoButton" to="Control/VBoxContainer/VBoxContainer/GoButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/ControlsButton" to="Control/VBoxContainer/VBoxContainer/ControlsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/How2PlayButton" to="Control/VBoxContainer/VBoxContainer/How2PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/StartButton" to="Control/VBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="text_submitted" from="testControl/AccelField" to="testControl/AccelField" method="_on_text_submitted"]
 [connection signal="text_submitted" from="testControl/MaxSpeedField" to="testControl/MaxSpeedField" method="_on_text_submitted"]
 [connection signal="text_submitted" from="testControl/JumpField" to="testControl/JumpField" method="_on_text_submitted"]

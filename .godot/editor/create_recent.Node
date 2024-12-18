@@ -1,10 +1,10 @@
+VBoxContainer
+HBoxContainer
 HSeparator
+CanvasLayer
 VSeparator
 AspectRatioContainer
-HBoxContainer
-VBoxContainer
 BoxContainer
-CanvasLayer
 TextureRect
 AnimationPlayer
 CollisionShape2D
