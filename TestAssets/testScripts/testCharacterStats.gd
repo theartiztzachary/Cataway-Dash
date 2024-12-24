@@ -49,3 +49,6 @@ var platform_height_relative = 80 #the distance between the floor and the platfo
 #gravity variables
 var gravity_acceleration = 15
 var gravity_max = 50
+
+#jump nuances
+var jump_power_hold_max = 5 #the amount of FRAMES for maximum jump power

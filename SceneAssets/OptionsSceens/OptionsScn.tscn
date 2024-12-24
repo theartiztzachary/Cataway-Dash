@@ -4,90 +4,96 @@
 [ext_resource type="Script" path="res://ScriptAssets/OptionsScreenScripts/OptionsControl.gd" id="1_krbrf"]
 [ext_resource type="Script" path="res://ScriptAssets/OptionsScreenScripts/ControlsButton.gd" id="2_ckqu4"]
 
-[node name="OptionsScn" type="Node2D"]
+[node name="OptionsScn" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_krbrf")
 
-[node name="OptionsTag" type="Label" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 63.0
-offset_bottom = 27.0
-text = "Options
-Note - resolution options may bug out due to the recent upsize change, and it has not been throughouly tested yet. Currently my focus as been getting the game mechanics finalized before coming and doing a second pass for the UI. Thanks :3"
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="StartButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 543.0
-offset_top = 445.0
-offset_right = 639.0
-offset_bottom = 476.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="OptionsTag" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Note - resolution options may bug out due to the recent upsize change, and it has not been throughouly tested yet. Currently my focus as been getting the game mechanics finalized before coming and doing a second pass for the UI. Thanks :3"
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeTag" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionTag" type="Label" parent="Control/VBoxContainer/ResolutionContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="VSeparator" type="VSeparator" parent="Control/VBoxContainer/ResolutionContainer"]
+layout_mode = 2
+
+[node name="ResolutionOptions" type="OptionButton" parent="Control/VBoxContainer/ResolutionContainer"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="WindowContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="WindowTag" type="Label" parent="Control/VBoxContainer/WindowContainer"]
+layout_mode = 2
+text = "Window"
+
+[node name="VSeparator" type="VSeparator" parent="Control/VBoxContainer/WindowContainer"]
+layout_mode = 2
+
+[node name="WindowOptions" type="OptionButton" parent="Control/VBoxContainer/WindowContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="ControlsButton" type="Button" parent="Control/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("2_ckqu4")
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
 text = "Main Menu
 "
 script = ExtResource("1_7fyei")
 
-[node name="ControlsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 564.0
-offset_top = 409.0
-offset_right = 638.0
-offset_bottom = 440.0
-text = "Controls"
-script = ExtResource("2_ckqu4")
-
-[node name="VolumeTag" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 95.0
-offset_right = 70.0
-offset_bottom = 118.0
-text = "Volume"
-
-[node name="ResolutionContainer" type="Control" parent="Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ResolutionTag" type="Label" parent="Control/ResolutionContainer"]
-layout_mode = 0
-offset_left = 403.0
-offset_top = 171.0
-offset_right = 486.0
-offset_bottom = 194.0
-text = "Resolution"
-
-[node name="ResolutionOptions" type="OptionButton" parent="Control/ResolutionContainer"]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 173.0
-offset_right = 545.0
-offset_bottom = 193.0
-
-[node name="WindowContainer" type="Control" parent="Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="WindowOptions" type="OptionButton" parent="Control/WindowContainer"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 173.0
-offset_right = 145.0
-offset_bottom = 193.0
-
-[node name="WindowTag" type="Label" parent="Control/WindowContainer"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 169.0
-offset_right = 75.0
-offset_bottom = 192.0
-text = "Window"
-
-[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
-[connection signal="item_selected" from="Control/ResolutionContainer/ResolutionOptions" to="Control" method="_on_resolution_options_item_selected"]
-[connection signal="item_selected" from="Control/WindowContainer/WindowOptions" to="Control" method="_on_window_options_item_selected"]
+[connection signal="item_selected" from="Control/VBoxContainer/ResolutionContainer/ResolutionOptions" to="Control" method="_on_resolution_options_item_selected"]
+[connection signal="item_selected" from="Control/VBoxContainer/WindowContainer/WindowOptions" to="Control" method="_on_window_options_item_selected"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer5/ControlsButton" to="Control/VBoxContainer/HBoxContainer5/ControlsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer5/StartButton" to="Control/VBoxContainer/HBoxContainer5/StartButton" method="_on_pressed"]

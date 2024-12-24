@@ -9,9 +9,9 @@ func _ready():
 	CharacterHandler.connect('currentCharacterSwitched', _on_character_changed)
 	
 	# grab the label nodes 
-	currentCharacterName = get_node('/root/CharacterSelectScn/Control/CharacterName')
-	currentCharacterAbility = get_node('/root/CharacterSelectScn/Control/AbilityName')
-	currentAbilityDescription = get_node('/root/CharacterSelectScn/Control/AbilityDescription')
+	currentCharacterName = get_node('/root/CharacterSelectScn/Control/VBoxContainer/HBoxContainer2/VBoxContainer3/CharacterName')
+	currentCharacterAbility = get_node('/root/CharacterSelectScn/Control/VBoxContainer/HBoxContainer2/VBoxContainer3/AbilityName')
+	currentAbilityDescription = get_node('/root/CharacterSelectScn/Control/VBoxContainer/HBoxContainer2/VBoxContainer3/AbilityDescription')
 	
 	# set the current character text
 	# fixes the issue of the descriptive text dissapearing on returning to character select

@@ -1,7 +1,9 @@
+LineEdit
+Label
 VBoxContainer
-HBoxContainer
-HSeparator
 CanvasLayer
+HSeparator
+HBoxContainer
 VSeparator
 AspectRatioContainer
 BoxContainer
@@ -11,4 +13,3 @@ CollisionShape2D
 Sprite2D
 CharacterBody2D
 Area2D
-Button

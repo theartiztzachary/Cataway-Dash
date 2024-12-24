@@ -10,158 +10,147 @@
 [ext_resource type="Script" path="res://ScriptAssets/ControlsScripts/How2PlayButton.gd" id="8_eetdm"]
 [ext_resource type="Script" path="res://ScriptAssets/ControlsScripts/PlayButton.gd" id="8_fyqw5"]
 
-[node name="ControlsScreenScn" type="Node2D"]
+[node name="ControlsScreenScn" type="CanvasLayer"]
 script = ExtResource("1_y8ojx")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Title" type="Label" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Controls"
 
-[node name="JumpLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 36.0
-offset_right = 100.0
-offset_bottom = 59.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="JumpLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Jump Button"
 
-[node name="JumpButtonLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 38.0
-offset_right = 152.0
-offset_bottom = 61.0
+[node name="JumpButtonLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
-[node name="JumpRebindButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 167.0
-offset_top = 33.0
-offset_right = 230.0
-offset_bottom = 64.0
+[node name="JumpRebindButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Rebind"
 script = ExtResource("2_5hx1w")
 
-[node name="BrakeLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 78.0
-offset_right = 105.0
-offset_bottom = 101.0
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="BrakeLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 text = "Brake Button"
 
-[node name="BrakeButtonLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 79.0
-offset_right = 157.0
-offset_bottom = 102.0
+[node name="BrakeButtonLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
-[node name="BrakeRebindButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 76.0
-offset_right = 237.0
-offset_bottom = 107.0
+[node name="BrakeRebindButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 text = "Rebind"
 script = ExtResource("3_e8c6e")
 
-[node name="SlideLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 119.0
-offset_right = 97.0
-offset_bottom = 142.0
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlideLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
 text = "Slide Button"
 
-[node name="SlideButtonLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 121.0
-offset_right = 150.0
-offset_bottom = 144.0
+[node name="SlideButtonLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
-[node name="SlideRebindButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 169.0
-offset_top = 116.0
-offset_right = 232.0
-offset_bottom = 147.0
+[node name="SlideRebindButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
 text = "Rebind"
 script = ExtResource("4_er56s")
 
-[node name="AbilityLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 156.0
-offset_right = 131.0
-offset_bottom = 179.0
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="AbilityLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
 text = "Character Ability"
 
-[node name="AbilityButtonLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 143.0
-offset_top = 158.0
-offset_right = 183.0
-offset_bottom = 181.0
+[node name="AbilityButtonLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
-[node name="AbilityRebindButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 208.0
-offset_top = 153.0
-offset_right = 271.0
-offset_bottom = 184.0
+[node name="AbilityRebindButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
 text = "Rebind"
 script = ExtResource("5_ag7xw")
 
-[node name="ResetBindsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 198.0
-offset_right = 184.0
-offset_bottom = 229.0
+[node name="HSeparator4" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResetBindsButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
 text = "Reset Binds to Default"
 script = ExtResource("6_c2gxw")
 
-[node name="StartButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 540.0
-offset_top = 340.0
-offset_right = 636.0
-offset_bottom = 371.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Main Menu"
 script = ExtResource("7_b1bln")
 
-[node name="How2PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 530.0
-offset_top = 375.0
-offset_right = 633.0
-offset_bottom = 406.0
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="How2PlayButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "How To Play"
 script = ExtResource("8_eetdm")
 
-[node name="PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 514.0
-offset_top = 410.0
-offset_right = 635.0
-offset_bottom = 475.0
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Play"
 script = ExtResource("8_fyqw5")
 
-[connection signal="pressed" from="Control/JumpRebindButton" to="Control/JumpRebindButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/BrakeRebindButton" to="Control/BrakeRebindButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/SlideRebindButton" to="Control/SlideRebindButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/AbilityRebindButton" to="Control/AbilityRebindButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/ResetBindsButton" to="Control/ResetBindsButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/How2PlayButton" to="Control/How2PlayButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/PlayButton" to="Control/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/JumpRebindButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/JumpRebindButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/BrakeRebindButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/BrakeRebindButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3/SlideRebindButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3/SlideRebindButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer4/AbilityRebindButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer4/AbilityRebindButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/ResetBindsButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/ResetBindsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/StartButton" to="Control/VBoxContainer/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/How2PlayButton" to="Control/VBoxContainer/VBoxContainer/How2PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/PlayButton" to="Control/VBoxContainer/VBoxContainer/PlayButton" method="_on_pressed"]

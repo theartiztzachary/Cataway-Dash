@@ -18,9 +18,9 @@ const window_array = [
 ]
 
 func _ready():
-	resolution_container = get_node('/root/OptionsScn/Control/ResolutionContainer')
-	resolution_option_button = get_node('/root/OptionsScn/Control/ResolutionContainer/ResolutionOptions')
-	window_option_button = get_node('/root/OptionsScn/Control/WindowContainer/WindowOptions')
+	resolution_container = get_node('/root/OptionsScn/Control/VBoxContainer/ResolutionContainer')
+	resolution_option_button = get_node('/root/OptionsScn/Control/VBoxContainer/ResolutionContainer/ResolutionOptions')
+	window_option_button = get_node('/root/OptionsScn/Control/VBoxContainer/WindowContainer/WindowOptions')
 	
 	resolution_container.visible = false
 	

@@ -9,10 +9,10 @@ var ability_label
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# actual grab the label nodes
-	jump_label = get_node('Control/JumpButtonLabel')
-	brake_label = get_node('Control/BrakeButtonLabel')
-	slide_label = get_node('Control/SlideButtonLabel')
-	ability_label = get_node('Control/AbilityButtonLabel')
+	jump_label = get_node('Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/JumpLabel')
+	brake_label = get_node('Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/BrakeLabel')
+	slide_label = get_node('Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3/SlideLabel')
+	ability_label = get_node('Control/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer3/SlideLabel')
 	
 	# set the labels
 	jump_label.set_text(CharacterHandler.jump_key)

@@ -1,1 +1,12 @@
+res://SceneAssets/CreditsScenes/CreditsScn.tscn
+res://SceneAssets/How2PlayScenes/How2PlayScn.tscn
+res://SceneAssets/OptionsSceens/OptionsScn.tscn
+res://ScriptAssets/OptionsScreenScripts/OptionsControl.gd
+res://SceneAssets/StartScreenScenes/StartScreenScn.tscn
 res://SceneAssets/CharacterSelectScenes/CharacterSelectScn.tscn
+res://SceneAssets/ControlsScenes/ControlsScreenScn.tscn
+res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
+res://ScriptAssets/PlayScreenScripts/PlayControler.gd
+res://docs/notes.txt
+res://TestAssets/testScripts/CharacterSelect/JumpHoldFrames.gd
+res://TestAssets/testScripts/testCharacterStats.gd

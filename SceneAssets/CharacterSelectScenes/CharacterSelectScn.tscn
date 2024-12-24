@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dafhek76v0apk"]
+[gd_scene load_steps=20 format=3 uid="uid://dafhek76v0apk"]
 
 [ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/SelenaButton.gd" id="1_oe67e"]
 [ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/Controler.gd" id="1_oeilx"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityMaxField.gd" id="16_v7aeg"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityAccelField.gd" id="17_x1yau"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/PlatHeightField.gd" id="18_s7gur"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/JumpHoldFrames.gd" id="19_gprtu"]
 
 [node name="CharacterSelectScn" type="CanvasLayer"]
 
@@ -82,6 +83,21 @@ layout_mode = 2
 text = "Lyvok"
 script = ExtResource("6_i5eh4")
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="AbilityName" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="AbilityDescription" type="Label" parent="Control/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -114,27 +130,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("7_rony2")
-
-[node name="CharacterName" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 8.0
-offset_right = 636.0
-offset_bottom = 34.0
-
-[node name="AbilityName" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 38.0
-offset_right = 638.0
-offset_bottom = 61.0
-
-[node name="AbilityDescription" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 191.0
-offset_top = 65.0
-offset_right = 633.0
-offset_bottom = 123.0
 
 [node name="testControl" type="Control" parent="."]
 layout_mode = 3
@@ -267,6 +262,21 @@ will know the change was sent successfully when the
 carrot moves to the front of the number you typed.
 Please only type numbers. If unsure, you can double check
 by picking another character or menu and then returning."
+
+[node name="JumpHoldLabel" type="Label" parent="testControl"]
+offset_left = 316.0
+offset_top = 321.0
+offset_right = 511.0
+offset_bottom = 344.0
+text = "Jump Power Hold Frames"
+
+[node name="JumpFrameField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 318.0
+offset_right = 589.063
+offset_bottom = 349.0
+script = ExtResource("19_gprtu")
 
 [connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" method="_on_pressed"]

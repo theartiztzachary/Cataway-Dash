@@ -31,7 +31,8 @@ var coyote_time
 var coyote_time_timer = 0
 
 ## 'Middle of the Screen' for camera fix
-var absolute_y = 475
+var fullpoint
+var absolute_y
 var midpoint
 var above_midpoint = false
 var passing_midpoint = false
@@ -80,7 +81,7 @@ var relative_block_anchor_position = 0
 ## Character Placement
 var play_character: CharacterBody2D
 const character_placement_x = 100
-const character_placement_y = 475
+var character_placement_y
 
 # loading screen to initialize all of this?
 func _ready():
@@ -148,6 +149,11 @@ func _ready():
 			jump_power = TestCharacterStats.lyvok_jump_power
 			slide_brake = TestCharacterStats.lyvok_slide_brake
 			
+	fullpoint = get_node('/root/PlayScreenScn/CanvasLayer/PlayControl').size.y
+	midpoint = get_node('/root/PlayScreenScn/CanvasLayer/PlayControl').size.y / 2
+	absolute_y = fullpoint - 5
+	
+	character_placement_y = fullpoint - 5 #number should be pixel size of the floor
 	play_character.position.x = character_placement_x
 	play_character.position.y = character_placement_y
 	play_character.z_index = 1
@@ -156,8 +162,6 @@ func _ready():
 	
 	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
 	gravity_max = TestCharacterStats.gravity_max * -1 #temp
-	
-	midpoint = get_node('/root/PlayScreenScn/PlayControl').size.y / 2
 	
 	## Starting Movement States
 	CharacterHandler.snap_next_frame = false
@@ -267,7 +271,7 @@ func block_initialization(): #loads 3 blocks on startup
 		
 		if block_count == 0:
 			block_instance.position.x = 0
-			block_instance.position.y = 480 # bottom left of the screen
+			block_instance.position.y = fullpoint # bottom left of the screen
 		else:
 			block_instance.position.x = block_array[-1].position.x + 1000
 			block_instance.position.y = block_array[-1].position.y
