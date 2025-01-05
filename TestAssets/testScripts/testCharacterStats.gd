@@ -49,3 +49,9 @@ var platform_height_relative = 80 #the distance between the floor and the platfo
 #gravity variables
 var gravity_acceleration = 15
 var gravity_max = 50
+
+#jump nuances
+var test_slide_extension_time = 0.5
+var test_slide_jump_boost = 20
+var test_jump_multiplier_time = 0.5
+var test_jump_multiplier = 20

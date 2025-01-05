@@ -1,3 +1,9 @@
-res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
-res://docs/notes.txt
+res://SceneAssets/CharacterSelectScenes/CharacterSelectScn.tscn
 res://ScriptAssets/PlayScreenScripts/PlayControler.gd
+res://TestAssets/testScripts/testCharacterStats.gd
+res://TestAssets/testScripts/CharacterSelect/JumpBoost.gd
+res://TestAssets/testScripts/CharacterSelect/JumpHoldFrames.gd
+res://TestAssets/testScripts/CharacterSelect/SlideBoostBoostField.gd
+res://TestAssets/testScripts/CharacterSelect/SlideBoostField.gd
+res://SceneAssets/PlayScreenScenes/PlayScreenScn.tscn
+res://ScriptAssets/CharacterSelectScripts/GoButton.gd

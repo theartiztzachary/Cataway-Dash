@@ -4,26 +4,37 @@
 [ext_resource type="Script" path="res://ScriptAssets/How2PlayScripts/StartButton.gd" id="2_3faol"]
 [ext_resource type="Script" path="res://ScriptAssets/How2PlayScripts/PlayButton.gd" id="3_pp62n"]
 
-[node name="How2PlayScn" type="Node2D"]
+[node name="How2PlayScn" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Title" type="Label" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1917.0
+offset_bottom = 1076.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "How To Play"
 
-[node name="Description" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 29.0
-offset_right = 618.0
-offset_bottom = 234.0
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="Label" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "To play, get as far as you can as fast as you can while avoiding obstacles along 
 the way. Points are calculated on how far you went, with multipliers based on
 your ratio of distance to time, and how many Star Coins you have collected. Star
@@ -33,33 +44,32 @@ You can slide under some obstacles.
 If you run into a platform instead of landing on it, your run will end.
 You can combine a slide into a jump for extra height."
 
-[node name="ControlsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 562.0
-offset_top = 343.0
-offset_right = 636.0
-offset_bottom = 374.0
-text = "Controls"
-script = ExtResource("1_hgg5g")
+[node name="HBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
 
-[node name="StartButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 541.0
-offset_top = 378.0
-offset_right = 637.0
-offset_bottom = 409.0
-text = "Main Menu"
-script = ExtResource("2_3faol")
-
-[node name="PlayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 412.0
-offset_right = 639.0
-offset_bottom = 476.0
+[node name="PlayButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 text = "Play"
 script = ExtResource("3_pp62n")
 
-[connection signal="pressed" from="Control/ControlsButton" to="Control/ControlsButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/PlayButton" to="Control/PlayButton" method="_on_pressed"]
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("2_3faol")
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="ControlsButton" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("1_hgg5g")
+
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/PlayButton" to="Control/VBoxContainer/HBoxContainer2/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/StartButton" to="Control/VBoxContainer/HBoxContainer2/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/ControlsButton" to="Control/VBoxContainer/HBoxContainer2/ControlsButton" method="_on_pressed"]
