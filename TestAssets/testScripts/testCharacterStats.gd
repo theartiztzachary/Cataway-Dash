@@ -51,4 +51,7 @@ var gravity_acceleration = 15
 var gravity_max = 50
 
 #jump nuances
-var jump_power_hold_max = 5 #the amount of FRAMES for maximum jump power
+var test_slide_extension_time = 0.5
+var test_slide_jump_boost = 20
+var test_jump_multiplier_time = 0.5
+var test_jump_multiplier = 20

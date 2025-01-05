@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dafhek76v0apk"]
+[gd_scene load_steps=22 format=3 uid="uid://dafhek76v0apk"]
 
 [ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/SelenaButton.gd" id="1_oe67e"]
 [ext_resource type="Script" path="res://ScriptAssets/CharacterSelectScripts/Controler.gd" id="1_oeilx"]
@@ -17,8 +17,10 @@
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/BrakeField.gd" id="15_kpwil"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityMaxField.gd" id="16_v7aeg"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/GravityAccelField.gd" id="17_x1yau"]
-[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/PlatHeightField.gd" id="18_s7gur"]
 [ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/JumpHoldFrames.gd" id="19_gprtu"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/JumpBoost.gd" id="19_v32mc"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/SlideBoostField.gd" id="20_1n8bl"]
+[ext_resource type="Script" path="res://TestAssets/testScripts/CharacterSelect/SlideBoostBoostField.gd" id="21_32wsr"]
 
 [node name="CharacterSelectScn" type="CanvasLayer"]
 
@@ -234,22 +236,6 @@ offset_right = 238.063
 offset_bottom = 386.0
 script = ExtResource("17_x1yau")
 
-[node name="PlatHeightLabel" type="Label" parent="testControl"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 398.0
-offset_right = 125.0
-offset_bottom = 421.0
-text = "Platform Height"
-
-[node name="PlatHeightField" type="LineEdit" parent="testControl"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 395.0
-offset_right = 202.063
-offset_bottom = 426.0
-script = ExtResource("18_s7gur")
-
 [node name="TestInstructions" type="Label" parent="testControl"]
 layout_mode = 0
 offset_left = 182.0
@@ -264,11 +250,12 @@ Please only type numbers. If unsure, you can double check
 by picking another character or menu and then returning."
 
 [node name="JumpHoldLabel" type="Label" parent="testControl"]
+layout_mode = 0
 offset_left = 316.0
 offset_top = 321.0
 offset_right = 511.0
 offset_bottom = 344.0
-text = "Jump Power Hold Frames"
+text = "Jump Power Hold Timer"
 
 [node name="JumpFrameField" type="LineEdit" parent="testControl"]
 layout_mode = 0
@@ -277,6 +264,54 @@ offset_top = 318.0
 offset_right = 589.063
 offset_bottom = 349.0
 script = ExtResource("19_gprtu")
+
+[node name="JumpPowerBoostLabel" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 361.0
+offset_right = 498.0
+offset_bottom = 384.0
+text = "Jump Power Hold Boost"
+
+[node name="JumpPowerMultField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 357.0
+offset_right = 588.063
+offset_bottom = 388.0
+script = ExtResource("19_v32mc")
+
+[node name="SlideExtensionTime" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 400.0
+offset_right = 354.0
+offset_bottom = 423.0
+text = "Slide Jump Timer"
+
+[node name="SlideBoostTimeField" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 395.0
+offset_right = 588.063
+offset_bottom = 426.0
+script = ExtResource("20_1n8bl")
+
+[node name="SlideJumpBoost" type="Label" parent="testControl"]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 436.0
+offset_right = 361.0
+offset_bottom = 459.0
+text = "Slide Jump Boost"
+
+[node name="SlideBoostMult" type="LineEdit" parent="testControl"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 433.0
+offset_right = 588.063
+offset_bottom = 464.0
+script = ExtResource("21_32wsr")
 
 [connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/IsaacButton" method="_on_pressed"]
@@ -294,4 +329,7 @@ script = ExtResource("19_gprtu")
 [connection signal="text_submitted" from="testControl/BrakeField" to="testControl/BrakeField" method="_on_text_submitted"]
 [connection signal="text_submitted" from="testControl/GravityMaxField" to="testControl/GravityMaxField" method="_on_text_submitted"]
 [connection signal="text_submitted" from="testControl/GravityAccelField" to="testControl/GravityAccelField" method="_on_text_submitted"]
-[connection signal="text_submitted" from="testControl/PlatHeightField" to="testControl/PlatHeightField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/JumpFrameField" to="testControl/JumpFrameField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/JumpPowerMultField" to="testControl/JumpPowerMultField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/SlideBoostTimeField" to="testControl/SlideBoostTimeField" method="_on_text_submitted"]
+[connection signal="text_submitted" from="testControl/SlideBoostMult" to="testControl/SlideBoostMult" method="_on_text_submitted"]

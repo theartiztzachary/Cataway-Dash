@@ -18,13 +18,18 @@ var jump_power
 var gravity_acceleration
 var gravity_applied = 0
 var gravity_max
-var jump_power_timer_multiplier = 0
+var jump_power_multiplier_active = false
+var jump_power_multiplier = 0
+var current_jump_power_multiplier = 0
+var jump_power_mult_time = 0.5
+var jump_power_mult_timer = 0
 
 var slide_brake 
 var slide_boost 
 var slide_extension_active = false
-var slide_extension_time 
+var slide_extension_time = 0.5
 var slide_extension_timer = 0
+var slide_jump_boost = 20
 
 var coyote_time_active = false
 var coyote_time
@@ -163,6 +168,12 @@ func _ready():
 	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
 	gravity_max = TestCharacterStats.gravity_max * -1 #temp
 	
+	jump_power_multiplier = TestCharacterStats.test_jump_multiplier
+	jump_power_mult_time = TestCharacterStats.test_jump_multiplier_time
+	
+	slide_jump_boost = TestCharacterStats.test_slide_jump_boost
+	slide_extension_time = TestCharacterStats.test_slide_extension_time
+	
 	## Starting Movement States
 	CharacterHandler.snap_next_frame = false
 	CharacterHandler.on_ground = true
@@ -200,6 +211,22 @@ func _process(delta):
 				if reality_warp_cooldown_timer >= reality_warp_cooldown:
 					reality_warp_cooldown_timer = 0
 					ability_ready = true
+		
+		if slide_extension_active:
+			slide_extension_timer += delta
+			if slide_extension_timer >= slide_extension_time:
+				slide_extension_active = false
+				
+		if jump_power_multiplier_active:
+			jump_power_mult_timer += delta
+			jump_power_multiplier -= 5
+			if jump_power_mult_timer >= jump_power_mult_time:
+				jump_power_multiplier_active = false
+		elif !jump_power_multiplier_active && current_jump_power_multiplier > 0:
+			current_jump_power_multiplier -= 10
+			if current_jump_power_multiplier <= 0:
+				current_jump_power_multiplier = 0
+				
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.OVER:
 		ending_game(delta)
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.END:
@@ -207,14 +234,22 @@ func _process(delta):
 		
 func _input(_event):
 	if Input.is_action_just_pressed('jump'):
+		jump_power_multiplier_active = true
+		current_jump_power_multiplier = jump_power_multiplier
 		if CharacterHandler.on_ground:
-			gravity_applied += jump_power
+			if slide_extension_active || CharacterHandler.is_sliding:
+				gravity_applied = gravity_applied + jump_power + slide_jump_boost
+			else:
+				gravity_applied += jump_power
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
 		elif !(CharacterHandler.on_ground) && (CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN) && ability_ready:
 			gravity_applied += jump_power
 			CharacterHandler.in_ability = true
 			ability_ready = false
+			
+	if Input.is_action_just_released('jump') && jump_power_multiplier_active:
+		jump_power_multiplier_active = false
 			
 	if Input.is_action_just_pressed('brake'):
 		CharacterHandler.is_braking = true
@@ -227,7 +262,7 @@ func _input(_event):
 	
 	if Input.is_action_just_released('slide'):
 		if CharacterHandler.on_ground:
-			#slide_extension_active = true
+			slide_extension_active = true
 			CharacterHandler.is_sliding = false
 		else:
 			CharacterHandler.is_sliding = false
@@ -290,11 +325,10 @@ func move_blocks(delta):
 					if CharacterHandler.snap_next_frame:
 						block.position.y += next_frame_delta 
 						absolute_y -= next_frame_delta
-						print('Snap! Block position: ' + str(block.position.y))
 						CharacterHandler.snap_next_frame = false
 					elif passing_midpoint:
-						block.position.y = 480
-						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - 480)))
+						block.position.y = fullpoint
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - fullpoint)))
 						passing_midpoint = false
 						above_midpoint = false
 					else:
@@ -338,15 +372,13 @@ func move_blocks(delta):
 			elif !(CharacterHandler.on_ground):
 				if block == block_array[0]:
 					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-						gravity_applied += (gravity_acceleration * delta * calculated_decision_slow)
+						gravity_applied = gravity_applied + (gravity_acceleration * delta * calculated_decision_slow) + (current_jump_power_multiplier * delta)
 					elif gravity_applied <= gravity_max:
 						gravity_applied = gravity_max
 				
 					if gravity_applied < 0:
 						CharacterHandler.is_jumping = false
 						CharacterHandler.is_falling = true
-						if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
-							CharacterHandler.in_ability = false
 							
 					collision_shape.position.y = play_character.position.y + (abs(gravity_applied) * calculated_decision_slow)
 					
@@ -372,11 +404,10 @@ func move_blocks(delta):
 					if CharacterHandler.snap_next_frame:
 						block.position.y += next_frame_delta 
 						absolute_y -= next_frame_delta
-						print('Snap! Block position: ' + str(block.position.y))
 						CharacterHandler.snap_next_frame = false
 					elif passing_midpoint:
-						block.position.y = 480
-						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - 480)))
+						block.position.y = fullpoint
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - fullpoint)))
 						passing_midpoint = false
 						above_midpoint = false
 					else:
@@ -420,7 +451,7 @@ func move_blocks(delta):
 			elif !(CharacterHandler.on_ground):
 				if block == block_array[0]:
 					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-						gravity_applied += (gravity_acceleration * delta)
+						gravity_applied = gravity_applied + (gravity_acceleration * delta) + (current_jump_power_multiplier * delta)
 					elif gravity_applied <= gravity_max:
 						gravity_applied = gravity_max
 				
