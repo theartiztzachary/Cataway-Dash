@@ -1,3 +1,8 @@
+Sprite2D
+AnimatedSprite2D
+AnimationPlayer
+CollisionShape2D
+Area2D
 LineEdit
 Label
 VBoxContainer
@@ -7,8 +12,3 @@ HBoxContainer
 VSeparator
 AspectRatioContainer
 BoxContainer
-TextureRect
-AnimationPlayer
-CollisionShape2D
-Sprite2D
-CharacterBody2D

@@ -18,11 +18,12 @@ var jump_power
 var gravity_acceleration
 var gravity_applied = 0
 var gravity_max
-var jump_power_multiplier_active = false
-var jump_power_multiplier = 0
-var current_jump_power_multiplier = 0
-var jump_power_mult_time = 0.5
-var jump_power_mult_timer = 0
+
+var jump_boost_active = false
+var jump_boost = 10
+var current_jump_boost = 0
+var boost_frames = 5 #temp
+var boost_tick
 
 var slide_brake 
 var slide_boost 
@@ -168,11 +169,12 @@ func _ready():
 	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
 	gravity_max = TestCharacterStats.gravity_max * -1 #temp
 	
-	jump_power_multiplier = TestCharacterStats.test_jump_multiplier
-	jump_power_mult_time = TestCharacterStats.test_jump_multiplier_time
-	
 	slide_jump_boost = TestCharacterStats.test_slide_jump_boost
 	slide_extension_time = TestCharacterStats.test_slide_extension_time
+	
+	jump_boost = TestCharacterStats.test_jump_boost
+	boost_frames = TestCharacterStats.test_jump_frames
+	boost_tick = jump_boost / boost_frames
 	
 	## Starting Movement States
 	CharacterHandler.snap_next_frame = false
@@ -217,15 +219,13 @@ func _process(delta):
 			if slide_extension_timer >= slide_extension_time:
 				slide_extension_active = false
 				
-		if jump_power_multiplier_active:
-			jump_power_mult_timer += delta
-			jump_power_multiplier -= 5
-			if jump_power_mult_timer >= jump_power_mult_time:
-				jump_power_multiplier_active = false
-		elif !jump_power_multiplier_active && current_jump_power_multiplier > 0:
-			current_jump_power_multiplier -= 10
-			if current_jump_power_multiplier <= 0:
-				current_jump_power_multiplier = 0
+		if jump_boost_active:
+			current_jump_boost += boost_tick * delta
+			if current_jump_boost >= jump_boost:
+				jump_boost_active = false
+				current_jump_boost = 0
+				
+		update_ui()
 				
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.OVER:
 		ending_game(delta)
@@ -234,9 +234,8 @@ func _process(delta):
 		
 func _input(_event):
 	if Input.is_action_just_pressed('jump'):
-		jump_power_multiplier_active = true
-		current_jump_power_multiplier = jump_power_multiplier
 		if CharacterHandler.on_ground:
+			jump_boost_active = true
 			if slide_extension_active || CharacterHandler.is_sliding:
 				gravity_applied = gravity_applied + jump_power + slide_jump_boost
 			else:
@@ -244,12 +243,14 @@ func _input(_event):
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
 		elif !(CharacterHandler.on_ground) && (CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN) && ability_ready:
+			jump_boost_active = true
 			gravity_applied += jump_power
 			CharacterHandler.in_ability = true
 			ability_ready = false
 			
-	if Input.is_action_just_released('jump') && jump_power_multiplier_active:
-		jump_power_multiplier_active = false
+	if Input.is_action_just_released('jump'):
+		jump_boost_active = false
+		current_jump_boost = 0
 			
 	if Input.is_action_just_pressed('brake'):
 		CharacterHandler.is_braking = true
@@ -372,7 +373,7 @@ func move_blocks(delta):
 			elif !(CharacterHandler.on_ground):
 				if block == block_array[0]:
 					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-						gravity_applied = gravity_applied + (gravity_acceleration * delta * calculated_decision_slow) + (current_jump_power_multiplier * delta)
+						gravity_applied = gravity_applied + ((gravity_acceleration + current_jump_boost) * delta * calculated_decision_slow)
 					elif gravity_applied <= gravity_max:
 						gravity_applied = gravity_max
 				
@@ -451,7 +452,7 @@ func move_blocks(delta):
 			elif !(CharacterHandler.on_ground):
 				if block == block_array[0]:
 					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-						gravity_applied = gravity_applied + (gravity_acceleration * delta) + (current_jump_power_multiplier * delta)
+						gravity_applied = gravity_applied + ((gravity_acceleration + current_jump_boost) * delta)
 					elif gravity_applied <= gravity_max:
 						gravity_applied = gravity_max
 				
@@ -503,6 +504,9 @@ func remove_block(block):
 	instantiated_children.erase(block)
 	block.queue_free()
 	block_count =- 1
+
+func update_ui():
+	pass
 	
 func ending_game(_delta):
 	#remove play control
@@ -533,6 +537,7 @@ func _on_safe(collision_shape_node):
 		next_frame_y = parent_block.position.y - next_frame_delta
 	
 	CharacterHandler.on_ground = true
+	jump_boost_active = false
 	CharacterHandler.is_falling = false
 	gravity_applied = 0
 	if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN && !ability_ready:
