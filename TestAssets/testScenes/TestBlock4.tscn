@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://gyikij2k4arn"]
+
+[ext_resource type="Texture2D" uid="uid://bsyph646ss6q2" path="res://TestAssets/testVisuals/testBlockVisuals/alphaTestBlockBackground.png" id="1_tb8on"]
+[ext_resource type="PackedScene" uid="uid://cl50jjiygtyfc" path="res://TestAssets/testScenes/TestFloor.tscn" id="2_nc2ek"]
+[ext_resource type="PackedScene" uid="uid://35htjotqvrly" path="res://TestAssets/testScenes/TestPlatform.tscn" id="3_1bj0a"]
+[ext_resource type="PackedScene" uid="uid://dla5mktqkxr0t" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinScene.tscn" id="3_3hy7p"]
+
+[node name="TestBlock" type="Node2D"]
+
+[node name="AlphaTestBlockBackground" type="Sprite2D" parent="."]
+position = Vector2(500, -500)
+texture = ExtResource("1_tb8on")
+
+[node name="TestFloor" parent="." instance=ExtResource("2_nc2ek")]
+
+[node name="TestPlatform" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(664, -58)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(250, -131)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(22, -261)
+
+[node name="TestPlatform4" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(638, -228)
+
+[node name="TestPlatform5" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(396, -389)
+
+[node name="TestPlatform6" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(27, -526)
+
+[node name="TestPlatform7" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(683, -611)
+
+[node name="TestPlatform8" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(292, -713)
+
+[node name="TestPlatform9" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(28, -893)
+
+[node name="TestPlatform10" parent="." instance=ExtResource("3_1bj0a")]
+position = Vector2(679, -828)
+
+[node name="StarCoinScene" parent="." instance=ExtResource("3_3hy7p")]
+position = Vector2(115, -898)
+
+[node name="StarCoinScene2" parent="." instance=ExtResource("3_3hy7p")]
+position = Vector2(820, -835)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = -95.0
+offset_right = 48.0
+offset_bottom = -72.0
+text = "4"

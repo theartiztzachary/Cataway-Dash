@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://drmkvdt4tdpu4"]
+
+[ext_resource type="Texture2D" uid="uid://bsyph646ss6q2" path="res://TestAssets/testVisuals/testBlockVisuals/alphaTestBlockBackground.png" id="1_lk4ns"]
+[ext_resource type="PackedScene" uid="uid://cl50jjiygtyfc" path="res://TestAssets/testScenes/TestFloor.tscn" id="2_1hioj"]
+[ext_resource type="PackedScene" uid="uid://35htjotqvrly" path="res://TestAssets/testScenes/TestPlatform.tscn" id="3_l0l7k"]
+[ext_resource type="PackedScene" uid="uid://dla5mktqkxr0t" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinScene.tscn" id="3_xgisp"]
+
+[node name="TestBlock" type="Node2D"]
+
+[node name="AlphaTestBlockBackground" type="Sprite2D" parent="."]
+position = Vector2(500, -500)
+texture = ExtResource("1_lk4ns")
+
+[node name="TestFloor" parent="." instance=ExtResource("2_1hioj")]
+
+[node name="TestPlatform" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(118, -223)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(672, -187)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(44, -450)
+
+[node name="TestPlatform4" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(637, -566)
+
+[node name="TestPlatform5" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(169, -775)
+
+[node name="TestPlatform6" parent="." instance=ExtResource("3_l0l7k")]
+position = Vector2(510, -776)
+
+[node name="StarCoinScene" parent="." instance=ExtResource("3_xgisp")]
+position = Vector2(246, -782)
+
+[node name="StarCoinScene2" parent="." instance=ExtResource("3_xgisp")]
+position = Vector2(586, -782)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = -107.0
+offset_right = 44.0
+offset_bottom = -84.0
+text = "3"

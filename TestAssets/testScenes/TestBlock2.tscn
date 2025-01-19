@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://3g5ijnwfqbl3"]
+
+[ext_resource type="Texture2D" uid="uid://bsyph646ss6q2" path="res://TestAssets/testVisuals/testBlockVisuals/alphaTestBlockBackground.png" id="1_1vv65"]
+[ext_resource type="PackedScene" uid="uid://cl50jjiygtyfc" path="res://TestAssets/testScenes/TestFloor.tscn" id="2_r54nk"]
+[ext_resource type="PackedScene" uid="uid://35htjotqvrly" path="res://TestAssets/testScenes/TestPlatform.tscn" id="3_ga2ip"]
+[ext_resource type="PackedScene" uid="uid://dla5mktqkxr0t" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinScene.tscn" id="3_k4nds"]
+
+[node name="TestBlock" type="Node2D"]
+
+[node name="AlphaTestBlockBackground" type="Sprite2D" parent="."]
+position = Vector2(500, -500)
+texture = ExtResource("1_1vv65")
+
+[node name="TestFloor" parent="." instance=ExtResource("2_r54nk")]
+
+[node name="TestPlatform" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(113, -99)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(585, -209)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(289, -343)
+
+[node name="TestPlatform4" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(664, -451)
+
+[node name="TestPlatform5" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(73, -516)
+
+[node name="TestPlatform6" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(502, -661)
+
+[node name="TestPlatform7" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(107, -837)
+
+[node name="TestPlatform8" parent="." instance=ExtResource("3_ga2ip")]
+position = Vector2(656, -955)
+
+[node name="StarCoinScene" parent="." instance=ExtResource("3_k4nds")]
+position = Vector2(701, -961)
+
+[node name="StarCoinScene2" parent="." instance=ExtResource("3_k4nds")]
+position = Vector2(174, -847)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = -93.0
+offset_right = 48.0
+offset_bottom = -70.0
+text = "2"

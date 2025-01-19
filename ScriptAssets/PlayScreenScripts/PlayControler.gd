@@ -2,6 +2,9 @@ extends Control
 
 ### LOCAL VARIABLES (variables in CharacterHanlder are defined in _ready)
 
+## Misc
+var random_number = RandomNumberGenerator.new()
+
 ## Score
 var score = 0
 var game_time = 0
@@ -174,7 +177,7 @@ func _ready():
 	
 	jump_boost = TestCharacterStats.test_jump_boost
 	boost_frames = TestCharacterStats.test_jump_frames
-	boost_tick = jump_boost / boost_frames
+	boost_tick = float(jump_boost) / float(boost_frames)
 	
 	## Starting Movement States
 	CharacterHandler.snap_next_frame = false
@@ -294,14 +297,17 @@ func block_initialization(): #loads 3 blocks on startup
 	while block_count < 4:
 		var block_to_load #will hold the variable that determines which block to load
 		if block_count == 0:
-			pass #this will bypass the RNG call so that the very first block in a run is always the same
+			block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock1.tscn')
 		else:
-			pass #rng call to set which block will be loaded
+			var block_number = random_number.randi_range(1, 5)
+			match block_number:
+				1: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock1.tscn')
+				2: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock2.tscn')
+				3: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock3.tscn')
+				4: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock4.tscn')
+				5: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock5.tscn')
 			
-		var block_scene
-		# match block_to_load setup
-		block_scene = ResourceLoader.load('res://TestAssets/testScenes/TestBlock.tscn')
-		var block_instance = block_scene.instantiate()
+		var block_instance = block_to_load.instantiate()
 		get_tree().get_root().add_child(block_instance)
 		instantiated_children.append(block_instance)
 		
@@ -484,12 +490,15 @@ func move_blocks(delta):
 			
 func add_block():
 	var block_to_load #will hold the variable that determines which block to load
-	#rng call to set which block will be loaded
+	var block_number = random_number.randi_range(1, 5)
+	match block_number:
+		1: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock1.tscn')
+		2: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock2.tscn')
+		3: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock3.tscn')
+		4: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock4.tscn')
+		5: block_to_load = ResourceLoader.load('res://TestAssets/testScenes/TestBlock5.tscn')
 			
-	var block_scene
-	# match block_to_load setup
-	block_scene = ResourceLoader.load('res://TestAssets/testScenes/TestBlock.tscn')
-	var block_instance = block_scene.instantiate()
+	var block_instance = block_to_load.instantiate()
 	get_tree().get_root().add_child(block_instance)
 	instantiated_children.append(block_instance)
 		

@@ -142,106 +142,106 @@ offset_bottom = 24.0
 
 [node name="AccelLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 141.0
-offset_right = 99.0
-offset_bottom = 164.0
+offset_left = 4.0
+offset_top = 237.0
+offset_right = 101.0
+offset_bottom = 260.0
 text = "Acceleration"
 
 [node name="AccelField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 107.0
-offset_top = 138.0
-offset_right = 174.063
-offset_bottom = 169.0
+offset_left = 112.0
+offset_top = 234.0
+offset_right = 179.063
+offset_bottom = 265.0
 script = ExtResource("12_fnptb")
 
 [node name="MaxSpeedLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 181.0
-offset_right = 89.0
-offset_bottom = 204.0
+offset_left = 8.0
+offset_top = 280.0
+offset_right = 93.0
+offset_bottom = 303.0
 text = "Max Speed"
 
 [node name="MaxSpeedField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 176.0
-offset_right = 173.063
-offset_bottom = 207.0
+offset_left = 109.0
+offset_top = 273.0
+offset_right = 176.063
+offset_bottom = 304.0
 script = ExtResource("13_thpah")
 
 [node name="JumpLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 221.0
-offset_right = 97.0
-offset_bottom = 244.0
+offset_left = 9.0
+offset_top = 318.0
+offset_right = 103.0
+offset_bottom = 341.0
 text = "Jump Power"
 
 [node name="JumpField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 216.0
-offset_right = 173.063
-offset_bottom = 247.0
+offset_left = 113.0
+offset_top = 318.0
+offset_right = 180.063
+offset_bottom = 349.0
 script = ExtResource("14_xyuoe")
 
 [node name="BrakeLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 258.0
-offset_right = 101.0
-offset_bottom = 281.0
+offset_left = 10.0
+offset_top = 375.0
+offset_right = 109.0
+offset_bottom = 398.0
 text = "Brake Power"
 
 [node name="BrakeField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 252.0
-offset_right = 173.063
-offset_bottom = 283.0
+offset_left = 119.0
+offset_top = 375.0
+offset_right = 186.063
+offset_bottom = 406.0
 script = ExtResource("15_kpwil")
 
 [node name="GravityMaxLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 324.0
-offset_right = 95.0
-offset_bottom = 347.0
+offset_left = 281.0
+offset_top = 234.0
+offset_right = 374.0
+offset_bottom = 257.0
 text = "Gravity Max"
 
 [node name="GravityMaxField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 321.0
-offset_right = 172.063
-offset_bottom = 352.0
+offset_left = 384.0
+offset_top = 232.0
+offset_right = 451.063
+offset_bottom = 263.0
 script = ExtResource("16_v7aeg")
 
 [node name="GravityAccelLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 359.0
-offset_right = 160.0
-offset_bottom = 382.0
+offset_left = 208.0
+offset_top = 270.0
+offset_right = 365.0
+offset_bottom = 293.0
 text = "Gravity Acceleration"
 
 [node name="GravityAccelField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 355.0
-offset_right = 238.063
-offset_bottom = 386.0
+offset_left = 384.0
+offset_top = 271.0
+offset_right = 451.063
+offset_bottom = 302.0
 script = ExtResource("17_x1yau")
 
 [node name="TestInstructions" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 182.0
-offset_top = 142.0
-offset_right = 631.0
-offset_bottom = 322.0
+offset_left = 3.0
+offset_top = 54.0
+offset_right = 455.0
+offset_bottom = 234.0
 text = "To edit a given stat, click on the input field for that stat
 and change the number before hitting the Enter key. You
 will know the change was sent successfully when the
@@ -251,66 +251,66 @@ by picking another character or menu and then returning."
 
 [node name="JumpHoldLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 321.0
-offset_right = 511.0
-offset_bottom = 344.0
+offset_left = 488.0
+offset_top = 231.0
+offset_right = 683.0
+offset_bottom = 254.0
 text = "Jump Power Hold Timer"
 
 [node name="JumpFrameField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 522.0
-offset_top = 318.0
-offset_right = 589.063
-offset_bottom = 349.0
+offset_left = 686.0
+offset_top = 227.0
+offset_right = 753.063
+offset_bottom = 258.0
 script = ExtResource("19_gprtu")
 
 [node name="JumpPowerBoostLabel" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 361.0
-offset_right = 498.0
-offset_bottom = 384.0
+offset_left = 490.0
+offset_top = 263.0
+offset_right = 672.0
+offset_bottom = 286.0
 text = "Jump Power Hold Boost"
 
 [node name="JumpPowerMultField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 357.0
-offset_right = 588.063
-offset_bottom = 388.0
+offset_left = 687.0
+offset_top = 263.0
+offset_right = 754.063
+offset_bottom = 294.0
 script = ExtResource("19_v32mc")
 
 [node name="SlideExtensionTime" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 314.0
-offset_top = 400.0
-offset_right = 354.0
-offset_bottom = 423.0
+offset_left = 516.0
+offset_top = 318.0
+offset_right = 647.0
+offset_bottom = 341.0
 text = "Slide Jump Timer"
 
 [node name="SlideBoostTimeField" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 395.0
-offset_right = 588.063
-offset_bottom = 426.0
+offset_left = 658.0
+offset_top = 313.0
+offset_right = 725.063
+offset_bottom = 344.0
 script = ExtResource("20_1n8bl")
 
 [node name="SlideJumpBoost" type="Label" parent="testControl"]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 436.0
-offset_right = 361.0
-offset_bottom = 459.0
+offset_left = 509.0
+offset_top = 362.0
+offset_right = 639.0
+offset_bottom = 385.0
 text = "Slide Jump Boost"
 
 [node name="SlideBoostMult" type="LineEdit" parent="testControl"]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 433.0
-offset_right = 588.063
-offset_bottom = 464.0
+offset_left = 660.0
+offset_top = 359.0
+offset_right = 727.063
+offset_bottom = 390.0
 script = ExtResource("21_32wsr")
 
 [connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" to="Control/VBoxContainer/HBoxContainer2/VBoxContainer/SelenaButton" method="_on_pressed"]

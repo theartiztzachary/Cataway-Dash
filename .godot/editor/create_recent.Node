@@ -1,10 +1,10 @@
+Label
 Sprite2D
 AnimatedSprite2D
 AnimationPlayer
 CollisionShape2D
 Area2D
 LineEdit
-Label
 VBoxContainer
 CanvasLayer
 HSeparator
