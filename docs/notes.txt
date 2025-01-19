@@ -1,16 +1,16 @@
-## BUGFIX LIST
+## BUG LIST
+> adien's double jump is buggy lmao
 
 ## IMPLEMENTATION LIST
+> upsize test sprites (start with x3)
 > adien has a two-part animation for his double jump (first half should not be looped, second half should be)
 > lyvok's animations need to include the "disconnect" between teleport points
 > full movement system implementation
 > finalize character stat numbers + guidelines for platform placements
 > at least 5 different blocks + set starting block
-> upscale to 1920
 > "actual" UI and assets
 > game/run over transitions with score and base UI
 > game starting animation (3 2 1 countdown)
-> Star Coin collectable
 > points system finalized
 > character abilities
 > controller support

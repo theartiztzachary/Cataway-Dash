@@ -15,48 +15,59 @@ var max_speed
 var brake_power
 
 var jump_power
-var gravity_acceleration #to be set once Pre-Alpha is over
+var gravity_acceleration
 var gravity_applied = 0
-var gravity_max #to be set once Pre-Alpha is over
+var gravity_max
+
+var jump_boost_active = false
+var jump_boost = 10
+var current_jump_boost = 0
+var boost_frames = 5 #temp
+var boost_tick
 
 var slide_brake 
-var slide_boost #to be set during Alpha cycle
+var slide_boost 
 var slide_extension_active = false
-var slide_extension_time #to be set during Alpha cycle
+var slide_extension_time = 0.5
 var slide_extension_timer = 0
+var slide_jump_boost = 20
 
 var coyote_time_active = false
-var coyote_time #to be set during Alpha cycle
+var coyote_time
 var coyote_time_timer = 0
 
 ## 'Middle of the Screen' for camera fix
-var absolute_y = 475
+var fullpoint
+var absolute_y
 var midpoint
 var above_midpoint = false
+var passing_midpoint = false
+var pass_midpoint_delta = 0
+var pass_midpoint_character_apply = 0
+var pass_midpoint_block_apply = 0
 
 ## Individual Character Ability Variables
 var ability_ready = true
 
 # Selena - Bladesurge
-var bladesurge_cooldown = 1 #to be set during Alpha or Beta cycle
+var bladesurge_cooldown = 1 
 var bladesurge_cooldown_timer = 0
 
 # Isaac - Burnout
 
 # DJ - Star Dash
 var star_dash_active = false
-var star_dash_speed_addition # to be set during Alpha or Beta cycle
+var star_dash_speed_addition = 5
 var star_dash_current_speed # will start at DJ's base max speed, and then added to
 
 # Korria - Calculated Decision
-var calculated_decision_active = false
-var calculated_decision_slow = .20 # to be set during Alpha or Beta cycle, will be invese decimal of the slow (ie 80% slow would be .20 variable)
+var calculated_decision_slow = .20 # invese decimal of the slow (ie 80% slow would be .20 variable)
 
 # Adien - Wind Step
 
 # Lyvok - Reality Warp
-var reality_warp_distance = 50 # to be set during Alpha or Beta cycle
-var reality_warp_cooldown = 1 # to be set during Alpha or Beta cycle
+var reality_warp_distance = 50 
+var reality_warp_cooldown = 1 
 var reality_warp_cooldown_timer = 0
 
 ## Block Management Variables
@@ -67,10 +78,16 @@ var block_initialization_distance_x = 0
 
 var instantiated_children = []
 
+## Collision Check Variables
+var collision_shape: CollisionShape2D
+var next_frame_y = 0
+var next_frame_delta = 0
+var relative_block_anchor_position = 0
+
 ## Character Placement
 var play_character: CharacterBody2D
 const character_placement_x = 100
-const character_placement_y = 475
+var character_placement_y
 
 # loading screen to initialize all of this?
 func _ready():
@@ -105,6 +122,8 @@ func _ready():
 			brake_power = TestCharacterStats.dj_brake_power
 			jump_power = TestCharacterStats.dj_jump_power
 			slide_brake = TestCharacterStats.dj_slide_brake
+			
+			star_dash_current_speed = TestCharacterStats.dj_max_speed
 		CharacterHandler.Character.KORRIA:
 			var korria_scene = ResourceLoader.load('res://SceneAssets/CharacterScenes/KorriaScn.tscn')
 			play_character = korria_scene.instantiate()
@@ -136,21 +155,29 @@ func _ready():
 			jump_power = TestCharacterStats.lyvok_jump_power
 			slide_brake = TestCharacterStats.lyvok_slide_brake
 			
+	fullpoint = get_node('/root/PlayScreenScn/CanvasLayer/PlayControl').size.y
+	midpoint = get_node('/root/PlayScreenScn/CanvasLayer/PlayControl').size.y / 2
+	absolute_y = fullpoint - 5
+	
+	character_placement_y = fullpoint - 5 #number should be pixel size of the floor
 	play_character.position.x = character_placement_x
 	play_character.position.y = character_placement_y
 	play_character.z_index = 1
 	get_tree().get_root().add_child(play_character)
+	collision_shape = play_character.find_child('CollisionShape2D')
 	
-	#CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START #there is currently no start animation lmao
-	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
+	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1 #temp
+	gravity_max = TestCharacterStats.gravity_max * -1 #temp
 	
-	##Temp
-	gravity_acceleration = TestCharacterStats.gravity_acceleration * -1
-	gravity_max = TestCharacterStats.gravity_max * -1
+	slide_jump_boost = TestCharacterStats.test_slide_jump_boost
+	slide_extension_time = TestCharacterStats.test_slide_extension_time
 	
-	midpoint = get_node('/root/PlayScreenScn/PlayControl').size.y / 2
+	jump_boost = TestCharacterStats.test_jump_boost
+	boost_frames = TestCharacterStats.test_jump_frames
+	boost_tick = jump_boost / boost_frames
 	
 	## Starting Movement States
+	CharacterHandler.snap_next_frame = false
 	CharacterHandler.on_ground = true
 	CharacterHandler.is_sliding = false
 	CharacterHandler.is_braking = false
@@ -166,11 +193,13 @@ func _ready():
 	
 	block_initialization()
 	
+	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.START
+	
 func _process(delta):
 	if CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.PLAY:
 		move_blocks(delta)
 		
-		if block_count < 3:
+		if block_count < 4:
 			add_block()
 			
 		if !ability_ready:
@@ -184,6 +213,20 @@ func _process(delta):
 				if reality_warp_cooldown_timer >= reality_warp_cooldown:
 					reality_warp_cooldown_timer = 0
 					ability_ready = true
+		
+		if slide_extension_active:
+			slide_extension_timer += delta
+			if slide_extension_timer >= slide_extension_time:
+				slide_extension_active = false
+				
+		if jump_boost_active:
+			current_jump_boost += boost_tick * delta
+			if current_jump_boost >= jump_boost:
+				jump_boost_active = false
+				current_jump_boost = 0
+				
+		update_ui()
+				
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.OVER:
 		ending_game(delta)
 	elif CharacterHandler.current_play_state == CharacterHandler.CurrentPlayState.END:
@@ -192,13 +235,22 @@ func _process(delta):
 func _input(_event):
 	if Input.is_action_just_pressed('jump'):
 		if CharacterHandler.on_ground:
-			gravity_applied += jump_power
+			jump_boost_active = true
+			if slide_extension_active || CharacterHandler.is_sliding:
+				gravity_applied = gravity_applied + jump_power + slide_jump_boost
+			else:
+				gravity_applied += jump_power
 			CharacterHandler.on_ground = false
 			CharacterHandler.is_jumping = true
 		elif !(CharacterHandler.on_ground) && (CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN) && ability_ready:
+			jump_boost_active = true
 			gravity_applied += jump_power
 			CharacterHandler.in_ability = true
 			ability_ready = false
+			
+	if Input.is_action_just_released('jump'):
+		jump_boost_active = false
+		current_jump_boost = 0
 			
 	if Input.is_action_just_pressed('brake'):
 		CharacterHandler.is_braking = true
@@ -211,7 +263,7 @@ func _input(_event):
 	
 	if Input.is_action_just_released('slide'):
 		if CharacterHandler.on_ground:
-			#slide_extension_active = true
+			slide_extension_active = true
 			CharacterHandler.is_sliding = false
 		else:
 			CharacterHandler.is_sliding = false
@@ -229,6 +281,7 @@ func _input(_event):
 				reality_warp_activated()
 				
 	if Input.is_action_just_released('ability'):
+		# Calculated Decision is the only ability we can really "deactivate"
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
 			CharacterHandler.in_ability = false
 			ability_ready = true
@@ -238,7 +291,7 @@ func _exit_tree():
 		instance.queue_free()
 	
 func block_initialization(): #loads 3 blocks on startup
-	while block_count < 3:
+	while block_count < 4:
 		var block_to_load #will hold the variable that determines which block to load
 		if block_count == 0:
 			pass #this will bypass the RNG call so that the very first block in a run is always the same
@@ -254,9 +307,11 @@ func block_initialization(): #loads 3 blocks on startup
 		
 		if block_count == 0:
 			block_instance.position.x = 0
+			block_instance.position.y = fullpoint # bottom left of the screen
 		else:
 			block_instance.position.x = block_array[-1].position.x + 1000
-		block_instance.position.y = 480
+			block_instance.position.y = block_array[-1].position.y
+
 		
 		block_array.append(block_instance)
 		block_count += 1
@@ -264,56 +319,169 @@ func block_initialization(): #loads 3 blocks on startup
 func move_blocks(delta):
 	for block in block_array:
 		if CharacterHandler.currentCharacter == CharacterHandler.Character.KORRIA && CharacterHandler.in_ability:
-			block.position.x -= (current_speed * delta * calculated_decision_slow)
-			absolute_y += (gravity_applied * delta * calculated_decision_slow)
+			block.position.x -= (current_speed * delta * calculated_decision_slow) # subtracting becuase we are moving blocks left to right
 			
-			if above_midpoint:
-				block.psotion.y = (gravity_applied * delta * calculated_decision_slow)
-			elif !above_midpoint:
-				play_character.position.y -= (gravity_applied * delta)
+			if block == block_array[0]:
+				if above_midpoint:
+					if CharacterHandler.snap_next_frame:
+						block.position.y += next_frame_delta 
+						absolute_y -= next_frame_delta
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						block.position.y = fullpoint
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - fullpoint)))
+						passing_midpoint = false
+						above_midpoint = false
+					else:
+						block.position.y += (gravity_applied * delta * calculated_decision_slow) # adding becuase the blocks move down
+						absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1 # keeps track of how "high" off the floor the character is
+				elif !above_midpoint:
+					if CharacterHandler.snap_next_frame:
+						play_character.position.y = next_frame_y
+						absolute_y = next_frame_y
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						play_character.position.y -= pass_midpoint_character_apply
+						block.position.y -=  pass_midpoint_block_apply
+						passing_midpoint = false
+						above_midpoint = true
+					else:
+						play_character.position.y -= (gravity_applied * delta * calculated_decision_slow) # subtracting because character moves up
+						absolute_y += (gravity_applied * delta * calculated_decision_slow) * -1 # keeps track of how "high" off the floor the character is
+			else:
+				block.position.y = block_array[0].position.y
+			
+			if CharacterHandler.on_ground:
+				if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
+					CharacterHandler.is_stopped = false
+					if current_speed < max_speed:
+						current_speed += (acceleration * delta)
+					elif current_speed >= max_speed:
+						current_speed = max_speed
+				elif CharacterHandler.is_sliding:
+					if current_speed > 0:
+						current_speed -= (slide_brake * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+				elif CharacterHandler.is_braking:
+					if current_speed > 0:
+						current_speed -= (brake_power * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+			elif !(CharacterHandler.on_ground):
+				if block == block_array[0]:
+					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
+						gravity_applied = gravity_applied + ((gravity_acceleration + current_jump_boost) * delta * calculated_decision_slow)
+					elif gravity_applied <= gravity_max:
+						gravity_applied = gravity_max
+				
+					if gravity_applied < 0:
+						CharacterHandler.is_jumping = false
+						CharacterHandler.is_falling = true
+							
+					collision_shape.position.y = play_character.position.y + (abs(gravity_applied) * calculated_decision_slow)
+					
+			if !above_midpoint && !passing_midpoint:
+				if (play_character.position.y - (gravity_applied * delta * calculated_decision_slow)) <= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = play_character.position.y - (play_character.position.y - (gravity_applied * delta * calculated_decision_slow))
+					pass_midpoint_character_apply = play_character.position.y - midpoint # character is coming up to midpoint
+					pass_midpoint_block_apply = pass_midpoint_delta - pass_midpoint_character_apply # blocks will move down after midpoint
+			elif above_midpoint && !passing_midpoint:
+				if (absolute_y + (gravity_applied * delta * -1 * calculated_decision_slow)) >= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = absolute_y - (absolute_y - (gravity_applied * delta * -1 * calculated_decision_slow))
+					pass_midpoint_block_apply = absolute_y - midpoint #blocks are coming up to midpoint
+					pass_midpoint_character_apply = pass_midpoint_delta - pass_midpoint_block_apply # character will move down after midpoint
+		
+		# end Korria ability movement block				
 		else:
 			block.position.x -= (current_speed * delta) # subtracting becuase we are moving blocks left to right
-			absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
 			
-			if above_midpoint:
-				block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
-			elif !above_midpoint:
-				play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
+			if block == block_array[0]:
+				if above_midpoint:
+					if CharacterHandler.snap_next_frame:
+						block.position.y += next_frame_delta 
+						absolute_y -= next_frame_delta
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						block.position.y = fullpoint
+						play_character.position.y += (pass_midpoint_character_apply + (abs(block.position.y - fullpoint)))
+						passing_midpoint = false
+						above_midpoint = false
+					else:
+						block.position.y += (gravity_applied * delta) # adding becuase the blocks move down
+						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+				elif !above_midpoint:
+					if CharacterHandler.snap_next_frame:
+						play_character.position.y = next_frame_y
+						absolute_y = next_frame_y
+						CharacterHandler.snap_next_frame = false
+					elif passing_midpoint:
+						play_character.position.y -= pass_midpoint_character_apply
+						block.position.y -=  pass_midpoint_block_apply
+						passing_midpoint = false
+						above_midpoint = true
+					else:
+						play_character.position.y -= (gravity_applied * delta) # subtracting because character moves up
+						absolute_y += (gravity_applied * delta) * -1 # keeps track of how "high" off the floor the character is
+			else:
+				block.position.y = block_array[0].position.y
 			
-		if CharacterHandler.on_ground:
-			if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
-				CharacterHandler.is_stopped = false
-				if current_speed < max_speed:
-					current_speed += (acceleration * delta)
-				elif current_speed >= max_speed:
-					current_speed = max_speed
-			elif CharacterHandler.is_sliding:
-				if current_speed > 0:
-					current_speed -= (slide_brake * delta)
-				elif current_speed <= 0:
-					current_speed = 0
-					CharacterHandler.is_stopped = true
-			elif CharacterHandler.is_braking:
-				if current_speed > 0:
-					current_speed -= (brake_power * delta)
-				elif current_speed <= 0:
-					current_speed = 0
-					CharacterHandler.is_stopped = true
-		elif !(CharacterHandler.on_ground):
-			if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
-				gravity_applied += (gravity_acceleration * delta)
-			elif gravity_applied <= gravity_max:
-				gravity_applied = gravity_max
+			if CharacterHandler.on_ground:
+				if !(CharacterHandler.is_braking) && !(CharacterHandler.is_sliding):
+					CharacterHandler.is_stopped = false
+					if current_speed < max_speed:
+						current_speed += (acceleration * delta)
+					elif current_speed >= max_speed:
+						current_speed = max_speed
+				elif CharacterHandler.is_sliding:
+					if current_speed > 0:
+						current_speed -= (slide_brake * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+				elif CharacterHandler.is_braking:
+					if current_speed > 0:
+						current_speed -= (brake_power * delta)
+					elif current_speed <= 0:
+						current_speed = 0
+						CharacterHandler.is_stopped = true
+			elif !(CharacterHandler.on_ground):
+				if block == block_array[0]:
+					if gravity_applied > gravity_max: # gravity max is negative so we check if applied is larger
+						gravity_applied = gravity_applied + ((gravity_acceleration + current_jump_boost) * delta)
+					elif gravity_applied <= gravity_max:
+						gravity_applied = gravity_max
 				
-			if gravity_applied < 0:
-				CharacterHandler.is_jumping = false
-				CharacterHandler.is_falling = true
-				if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
-					CharacterHandler.in_ability = false
+					if gravity_applied < 0:
+						CharacterHandler.is_jumping = false
+						CharacterHandler.is_falling = true
+						if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN:
+							CharacterHandler.in_ability = false
+							
+					collision_shape.position.y = play_character.position.y + abs(gravity_applied)
+					
+			if !above_midpoint && !passing_midpoint:
+				if (play_character.position.y - (gravity_applied * delta)) <= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = play_character.position.y - (play_character.position.y - (gravity_applied * delta))
+					pass_midpoint_character_apply = play_character.position.y - midpoint # character is coming up to midpoint
+					pass_midpoint_block_apply = pass_midpoint_delta - pass_midpoint_character_apply # blocks will move down after midpoint
+			elif above_midpoint && !passing_midpoint:
+				if (absolute_y + (gravity_applied * delta * -1)) >= midpoint:
+					passing_midpoint = true
+					pass_midpoint_delta = absolute_y - (absolute_y - (gravity_applied * delta * -1))
+					pass_midpoint_block_apply = absolute_y - midpoint #blocks are coming up to midpoint
+					pass_midpoint_character_apply = pass_midpoint_delta - pass_midpoint_block_apply # character will move down after midpoint
+		
+		# end regular movement block
 				
 		if block.position.x <= -1100 && block_count >= 3:
 			remove_block(block)
-	
+			
 func add_block():
 	var block_to_load #will hold the variable that determines which block to load
 	#rng call to set which block will be loaded
@@ -326,7 +494,7 @@ func add_block():
 	instantiated_children.append(block_instance)
 		
 	block_instance.position.x = block_array[-1].position.x + 1000
-	block_instance.position.y = 480
+	block_instance.position.y = block_array[-1].position.y
 	
 	block_array.append(block_instance)
 	block_count += 1
@@ -336,21 +504,40 @@ func remove_block(block):
 	instantiated_children.erase(block)
 	block.queue_free()
 	block_count =- 1
+
+func update_ui():
+	pass
 	
 func ending_game(_delta):
 	#remove play control
 	#fade out blocks/background
 	#add in end control
 	#calculate score
-	#score = (game_distance / game_time) * star_coins\
+	#score = (game_distance / game_time) * star_coins
 	CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.END
 	
 func final_end():
 	SceneHandler.goto_scene('res://SceneAssets/CharacterSelectScenes/CharacterSelectScn.tscn')
 	#buttons come in
 		
-func _on_safe():
+# character, collision shape
+func _on_safe(collision_shape_node):
+	# initial variable collection
+	var collision_shape_position_y = collision_shape_node.global_position.y
+	CharacterHandler.snap_next_frame = true
+	
+	# stuff if we are below midpoint
+	if !above_midpoint:
+		next_frame_y = collision_shape_position_y
+	# stuff if we are above midpoint
+	elif above_midpoint:
+		var parent_block = collision_shape_node.get_parent().get_parent() # should return to block parent of the platform/floor
+		relative_block_anchor_position = parent_block.position.y - collision_shape_position_y
+		next_frame_delta = play_character.position.y - collision_shape_position_y
+		next_frame_y = parent_block.position.y - next_frame_delta
+	
 	CharacterHandler.on_ground = true
+	jump_boost_active = false
 	CharacterHandler.is_falling = false
 	gravity_applied = 0
 	if CharacterHandler.currentCharacter == CharacterHandler.Character.ADIEN && !ability_ready:
@@ -361,7 +548,7 @@ func _on_unsafe():
 		burnout_activated()
 	else:
 		gravity_applied = 0
-		CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.OVER
+		#CharacterHandler.current_play_state = CharacterHandler.CurrentPlayState.OVER
 	
 func _on_star_coin():
 	star_coins_collected += 1

@@ -5,20 +5,27 @@
 
 [node name="PlayScreenScn" type="Node"]
 
-[node name="TestControl" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TestControl" type="Control" parent="CanvasLayer"]
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
-offset_right = 141.0
-offset_bottom = 60.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Title" type="Label" parent="TestControl"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestControl"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Title" type="Label" parent="CanvasLayer/TestControl"]
 layout_mode = 0
 offset_right = 89.0
 offset_bottom = 23.0
 text = "Play Screen"
 
-[node name="CharacterSelectButton" type="Button" parent="TestControl"]
+[node name="CharacterSelectButton" type="Button" parent="CanvasLayer/TestControl"]
 z_index = 5
 layout_mode = 0
 offset_left = 2.0
@@ -28,20 +35,20 @@ offset_bottom = 55.0
 text = "Character Select"
 script = ExtResource("1_j08ci")
 
-[node name="PlayControl" type="Control" parent="."]
+[node name="PlayControl" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_aiy1x")
 
-[node name="EndControl" type="Control" parent="."]
+[node name="EndControl" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 480.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[connection signal="pressed" from="TestControl/CharacterSelectButton" to="TestControl/CharacterSelectButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestControl/CharacterSelectButton" to="CanvasLayer/TestControl/CharacterSelectButton" method="_on_pressed"]

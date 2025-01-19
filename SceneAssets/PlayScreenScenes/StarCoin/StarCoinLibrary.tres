@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://df7mlkyop00jx"]
+
+[ext_resource type="Animation" uid="uid://cvp8br44qm2pj" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinAnimation.tres" id="1_671qy"]
+
+[resource]
+_data = {
+"StarCoinAnimation": ExtResource("1_671qy")
+}

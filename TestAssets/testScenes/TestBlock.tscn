@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsyph646ss6q2" path="res://TestAssets/testVisuals/testBlockVisuals/alphaTestBlockBackground.png" id="1_al1ay"]
 [ext_resource type="PackedScene" uid="uid://cl50jjiygtyfc" path="res://TestAssets/testScenes/TestFloor.tscn" id="2_13gvf"]
-[ext_resource type="PackedScene" uid="uid://35htjotqvrly" path="res://TestAssets/testScenes/TestPlatform.tscn" id="3_gn8k7"]
+[ext_resource type="PackedScene" uid="uid://dla5mktqkxr0t" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinScene.tscn" id="3_q8ktb"]
 
 [node name="TestBlock" type="Node2D"]
 
@@ -12,9 +12,5 @@ texture = ExtResource("1_al1ay")
 
 [node name="TestFloor" parent="." instance=ExtResource("2_13gvf")]
 
-[node name="TestPlatform_" parent="." instance=ExtResource("3_gn8k7")]
-position = Vector2(484, -75)
-
-[node name="TestPlatform_2" parent="." instance=ExtResource("3_gn8k7")]
-z_index = 1
-position = Vector2(664, -143)
+[node name="StarCoinScene" parent="." instance=ExtResource("3_q8ktb")]
+position = Vector2(192, -5)

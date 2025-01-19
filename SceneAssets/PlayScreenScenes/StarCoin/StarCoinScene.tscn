@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dla5mktqkxr0t"]
+
+[ext_resource type="Script" path="res://ScriptAssets/PlayScreenScripts/StarCoinScript.gd" id="1_agtby"]
+[ext_resource type="Texture2D" uid="uid://b08rbwepbd2p2" path="res://TestAssets/testVisuals/testBlockVisuals/testStarCoin.png" id="1_y85xk"]
+[ext_resource type="AnimationLibrary" uid="uid://df7mlkyop00jx" path="res://SceneAssets/PlayScreenScenes/StarCoin/StarCoinLibrary.tres" id="2_cm1eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwiy4"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_jxq6t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_y85xk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43oyh"]
+_data = {
+"RESET": SubResource("Animation_jxq6t")
+}
+
+[node name="StarCoinScene" type="Area2D"]
+script = ExtResource("1_agtby")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_y85xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_xwiy4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_43oyh"),
+"StarCoinLibrary": ExtResource("2_cm1eu")
+}
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
